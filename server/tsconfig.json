@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "paths": {
+      "*": [
+        "node_modules/*"
+      ]
+    },
+    "target": "ES6",
+    "types": ["jest", "node"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "sourceMap": true
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["src/**/*", "test"]
+}
