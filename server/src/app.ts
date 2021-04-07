@@ -2,6 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import corsOptions from './config/corsOptions';
+import helmetOptions from './config/helmetOptions';
 import morgan from './config/morgan';
 import { NODE_ENV } from './config/secrets';
 
@@ -19,7 +20,7 @@ app.set('env', NODE_ENV || 'development');
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(helmet());
+app.use(helmet(helmetOptions));
 app.use(morgan);
 
 app.get('/api/business', business.getAllBusinesses);

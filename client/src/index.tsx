@@ -1,23 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Auth0Provider } from '@auth0/auth0-react';
-import './index.css';
-import App from './App';
+import App from './views/routes/index';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
 
 require('dotenv').config();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      audience={process.env.REACT_APP_AUTH0_AUDIENCE!}
-      domain={process.env.REACT_APP_AUTH0_DOMAIN!}
-      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID!}
-      redirectUri={window.location.origin}
-      scope='read:current_user update:current_user_metadata'
-    >
-      <App />
-    </Auth0Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root'),
 );

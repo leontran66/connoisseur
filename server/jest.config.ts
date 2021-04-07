@@ -4,7 +4,7 @@ export default {
       tsconfig: 'tsconfig.json',
     },
   },
-  moduleFileExtensions: ['js', 'ts'],
+  moduleFileExtensions: ['js', 'ts', 'jsx', 'tsx'],
   modulePathIgnorePatterns: ['dist'],
   testEnvironment: 'node',
   testMatch: [
@@ -12,7 +12,7 @@ export default {
   ],
   testPathIgnorePatterns: ['<rootDir>/dist/'],
   transform: {
-    '^.+\\.ts?$': 'ts-jest',
+    '^.+\\.tsx?$': 'ts-jest',
   },
   verbose: true,
 };
