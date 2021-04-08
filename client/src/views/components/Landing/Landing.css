@@ -1,0 +1,18 @@
+.landing {
+  width: 40%;
+  min-height: 59.9vh;
+  margin-top: 20em;
+  padding: 0 1em !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .landing {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .landing {
+    width: 100%;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "name": "containerfluid",
+  "main": "./ContainerFluid.tsx"
+}

@@ -1,0 +1,61 @@
+.restaurants {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #212529;
+}
+
+.restaurants .row {
+  width: 100%;
+}
+
+.restaurant {
+  width: 33.33% !important;
+  height: 100vh;
+}
+
+.restaurant .card-text {
+  margin-top: 1em;
+}
+
+.restaurant .card-text span {
+  margin-left: 0.5em;
+}
+
+.restaurant .card-text svg {
+  margin-top: -0.2em;
+}
+
+.restaurant .card-text .num-reviews {
+  font-weight: lighter;
+  font-size: 0.75em;
+}
+
+@media only screen and (max-width: 958px) {
+  .restaurant {
+    width: 100% !important;
+    height: 33.33vh;
+    white-space: nowrap;
+  }
+
+  .restaurant .card-img-top {
+    display: inline-block;
+    max-width: 17.5em;
+    height: auto;
+    margin-right: 1.25em;
+    vertical-align: top;
+  }
+
+  .restaurant .card-text {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .restaurant .card-img-top {
+    max-width: 8em;
+    margin-top: 4.5em;
+  }
+}

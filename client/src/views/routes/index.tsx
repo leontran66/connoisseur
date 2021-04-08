@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 import business from '../pages/business';
 import businesses from '../pages/businesses';
-import index from '../pages/index';
+import notfound from '../pages/notfound';
+import defaultRoute from './default';
 import profile from '../pages/profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.esm.min.js';
@@ -23,10 +24,12 @@ const App = () => {
     >
       <Router>
         <Switch>
-          <Route exact path='/' component={index} />
-          <Route exact path='/restaurants' component={businesses} />
-          <Route exact path='/restaurants/:id' component={business} />
-          <Route exact path='/profile' component={profile} />
+          <Route path='/profile' component={profile} />
+          <Route path='/restaurants' component={businesses} />
+          <Route path='/restaurants/:id' component={business} />
+          <Route exact path='/' component={defaultRoute} />
+          <Route exact path='/index.html' component={defaultRoute} />
+          <Route component={notfound} />
         </Switch>
       </Router>
     </Auth0Provider>

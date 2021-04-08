@@ -1,0 +1,4 @@
+{
+  "name": "pagination",
+  "main": "./Pagination.tsx"
+}

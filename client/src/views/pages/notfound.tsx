@@ -3,17 +3,16 @@ import Container from '../components/common/Container';
 import Footer from '../components/common/Footer';
 import Header from '../components/common/Navbar';
 
-const IndexPage = () => (
+const NotFoundPage = () => (
   <>
     <Header />
     <Container>
-      Index Page
-      <p>Display search bar on landing</p>
-      <p>Display top 5 most popular businesses</p>
-      <p>Display search bar at bottom</p>
+      Not Found Page
+      <p>Display error 404</p>
+      <p>Display error & links to go back</p>
     </Container>
     <Footer />
   </>
 );
 
-export default IndexPage;
+export default NotFoundPage;

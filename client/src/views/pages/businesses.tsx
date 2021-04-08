@@ -1,15 +1,18 @@
 import React from 'react';
+import Container from '../components/common/Container';
 import Footer from '../components/common/Footer';
 import Header from '../components/common/Navbar';
+import Pagination from '../components/Businesses/Pagination';
 
 const BusinessesPage = () => (
   <>
     <Header />
-    <div className='container'>
+    <Container>
       Businesses Page
       <p>Display search bar for businesses</p>
       <p>Display all businesses, paginated, limit 20</p>
-    </div>
+      <Pagination />
+    </Container>
     <Footer />
   </>
 );
