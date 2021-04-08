@@ -25,8 +25,8 @@ const App = () => {
       <Router>
         <Switch>
           <Route path='/profile' component={profile} />
-          <Route path='/restaurants' component={businesses} />
           <Route path='/restaurants/:id' component={business} />
+          <Route path='/restaurants' component={businesses} />
           <Route exact path='/' component={defaultRoute} />
           <Route exact path='/index.html' component={defaultRoute} />
           <Route component={notfound} />

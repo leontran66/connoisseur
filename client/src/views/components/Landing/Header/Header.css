@@ -1,18 +1,21 @@
-.landing {
+.header {
   width: 40%;
-  min-height: 59.9vh;
-  margin-top: 20em;
+  min-height: 94vh;
   padding: 0 1em !important;
 }
 
+.header h1 {
+  padding-top: 7.5em;
+}
+
 @media only screen and (max-width: 1200px) {
-  .landing {
+  .header {
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .landing {
+  .header {
     width: 100%;
   }
 }

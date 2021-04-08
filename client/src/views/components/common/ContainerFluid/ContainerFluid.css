@@ -1,3 +1,7 @@
+.container-fluid {
+  background-color: #ffffff;
+}
+
 @media only screen and (max-width: 768px) {
   .container-fluid {
     min-height: 86.1vh;

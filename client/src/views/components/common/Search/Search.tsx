@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Search = () => (
-  <div className='search'>
+  <div className='search pt-3 mb-3'>
     <form>
       <div className='input-group'>
         <input type='text' className='form-control' id='search_query' placeholder='Search' />

@@ -1,0 +1,13 @@
+.heading .heading-review {
+  margin-top: 1em;
+  text-align: center;
+}
+
+.heading .heading-rating {
+  margin-left: -0.5em;
+}
+
+.heading .num-reviews {
+  font-weight: lighter;
+  font-size: 0.5em;
+}

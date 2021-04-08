@@ -1,21 +1,10 @@
 .wrapper {
-  min-height: 86.1vh;
-}
-
-@media only screen and (min-width: 769px) {
-  .wrapper {
-    min-height: 86.1vh;
-  }
-}
-
-@media only screen and (min-width: 995px) {
-  .wrapper {
-    min-height: 86.1vh;
-  }
+  min-height: 87.8vh;
+  background-color: #ffffff;
 }
 
 @media only screen and (min-width: 1920px) {
   .wrapper {
-    min-height: 86.2vh;
+    min-height: 87.9vh;
   }
 }
