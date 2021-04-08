@@ -8,7 +8,7 @@ const Navbar = () => {
   } = useAuth0();
 
   const guestLinks = (
-    <ul className='navbar-nav mr-auto mb-2 mb-lg-0'>
+    <ul className='navbar-nav mr-auto'>
       <li className='nav-item'>
         <a className='nav-link' href='#!' onClick={() => loginWithRedirect()}>Login</a>
       </li>
@@ -16,7 +16,7 @@ const Navbar = () => {
   );
 
   const authLinks = (
-    <ul className='navbar-nav mr-auto mb-2 mb-lg-0'>
+    <ul className='navbar-nav mr-auto'>
       <li className='nav-item'>
         <a className='nav-link' href='/profile'>Profile</a>
       </li>
@@ -28,13 +28,13 @@ const Navbar = () => {
 
   return (
     <div className='navbar navbar-expand-md navbar-dark bg-dark mb-3'>
-      <div className='container-fluid'>
+      <div className='container'>
         <a className='navbar-brand' href='/'>Connoisseur</a>
         <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
           <span className='navbar-toggler-icon' />
         </button>
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-          <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+          <ul className='navbar-nav me-auto'>
             <li className='nav-item'>
               <a className='nav-link' href='/restaurants'>Restaurants</a>
             </li>

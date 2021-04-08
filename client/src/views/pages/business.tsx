@@ -1,11 +1,11 @@
 import React from 'react';
 import Container from '../components/common/Container';
 import Footer from '../components/common/Footer';
-import Header from '../components/common/Navbar';
+import Navbar from '../components/common/Navbar';
 
 const BusinessPage = () => (
   <>
-    <Header />
+    <Navbar />
     <Container>
       Business Page
       <p>Display business name & average rating</p>

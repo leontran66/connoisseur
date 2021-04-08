@@ -1,23 +1,23 @@
 @media only screen and (max-width: 768px) {
-  .wrapper {
+  .container-fluid {
     min-height: 86.1vh;
   }
 }
 
 @media only screen and (min-width: 769px) {
-  .wrapper {
+  .container-fluid {
     min-height: 85.2vh;
   }
 }
 
 @media only screen and (min-width: 995px) {
-  .wrapper {
+  .container-fluid {
     min-height: 86.1vh;
   }
 }
 
 @media only screen and (min-width: 1920px) {
-  .wrapper {
+  .container-fluid {
     min-height: 86.2vh;
   }
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import Container from '../components/common/Container';
 import Footer from '../components/common/Footer';
-import Header from '../components/common/Navbar';
+import Navbar from '../components/common/Navbar';
 import Pagination from '../components/Businesses/Pagination';
 
 const BusinessesPage = () => (
   <>
-    <Header />
+    <Navbar />
     <Container>
       Businesses Page
       <p>Display search bar for businesses</p>

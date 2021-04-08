@@ -4,8 +4,8 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import business from '../pages/business';
 import businesses from '../pages/businesses';
 import notfound from '../pages/notfound';
-import defaultRoute from './default';
 import profile from '../pages/profile';
+import defaultRoute from './default';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.esm.min.js';
 

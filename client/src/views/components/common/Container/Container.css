@@ -1,12 +1,10 @@
-@media only screen and (max-width: 768px) {
-  .wrapper {
-    min-height: 86.1vh;
-  }
+.wrapper {
+  min-height: 86.1vh;
 }
 
 @media only screen and (min-width: 769px) {
   .wrapper {
-    min-height: 85.2vh;
+    min-height: 86.1vh;
   }
 }
 

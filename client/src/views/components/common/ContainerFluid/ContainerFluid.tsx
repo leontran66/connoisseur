@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Container = ({ children }: Props) => (
-  <div className='container-fluid wrapper p-0'>
+  <div className='container-fluid p-0'>
     {children}
   </div>
 );
