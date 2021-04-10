@@ -2,22 +2,25 @@ import React from 'react';
 import './Heading.css';
 
 const Heading = () => (
-  <div className='heading pt-3 border-bottom'>
+  <div className='heading pt-3'>
     <div className='row justify-content-between'>
       <div className='col-9'>
-        <h1 className='mb-2'>Business Name</h1>
-        <p className='mb-1'>
-          <b>Address:&nbsp;</b>
-          1 Hello Street, World, QLD, 4123
-        </p>
-        <p className='mb-1'>
-          <b>Phone:&nbsp;</b>
-          31231231
-        </p>
-        <p>
-          <b>Fax:&nbsp;</b>
-          31231231
-        </p>
+        <img src='https://static.wikia.nocookie.net/wowwiki/images/e/ee/WoW_Companion_App_icon-Google_Play.png' className='img-fluid' alt='WoW' />
+        <div className='heading-details'>
+          <h1 className='mb-2'>Business Name</h1>
+          <p className='mb-1'>
+            <b>Address:&nbsp;</b>
+            1 Hello Street, World, QLD, 4123
+          </p>
+          <p className='mb-1'>
+            <b>Phone:&nbsp;</b>
+            31231231
+          </p>
+          <p>
+            <b>Fax:&nbsp;</b>
+            31231231
+          </p>
+        </div>
       </div>
       <div className='col-3 heading-review'>
         <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' fill='yellow' className='bi bi-star-fill' viewBox='0 0 16 16'>

@@ -1,0 +1,22 @@
+#reviews .row {
+  padding: 0 1em;
+}
+
+#reviews .col-6 {
+  padding: 0;
+}
+
+#reviews .card {
+  border: none;
+  border-radius: 0;
+}
+
+#reviews .card-title svg {
+  margin-top: -0.25em !important;
+}
+
+@media only screen and (max-width: 768px) {
+  #reviews .col-6 {
+    width: 100%;
+  }
+}

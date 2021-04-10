@@ -1,3 +1,12 @@
+.heading .col-9 img {
+  display: inline-block;
+  margin: -3em 1em 1em 0;
+}
+
+.heading .col-9 .heading-details {
+  display: inline-block;
+}
+
 .heading .heading-review {
   margin-top: 1em;
   text-align: center;
@@ -10,4 +19,10 @@
 .heading .num-reviews {
   font-weight: lighter;
   font-size: 0.5em;
+}
+
+@media only screen and (max-width: 768px) {
+  .heading .col-9 img {
+    margin-top: 0;
+  }
 }

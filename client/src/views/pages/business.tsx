@@ -2,18 +2,20 @@ import React from 'react';
 import Container from '../components/common/Container';
 import Footer from '../components/common/Footer';
 import Heading from '../components/Business/Heading';
+import Menu from '../components/Business/Menu';
 import Navbar from '../components/common/Navbar';
+import Reviews from '../components/Business/Reviews';
+import Tabs from '../components/Business/Tabs';
 
 const BusinessPage = () => (
   <>
     <Navbar />
     <Container>
       <Heading />
-      Business Page
-      <p>Display business name & average rating</p>
-      <p>Display business details in side nav</p>
-      <p>Display all menu items</p>
-      <p>Display all reviews for business</p>
+      <Tabs>
+        <Menu />
+        <Reviews />
+      </Tabs>
     </Container>
     <Footer />
   </>

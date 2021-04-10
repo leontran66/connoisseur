@@ -1,0 +1,22 @@
+#menu .row {
+  padding: 0 1em;
+}
+
+#menu .col-6 {
+  padding: 0;
+}
+
+#menu .card {
+  border: none;
+  border-radius: 0;
+}
+
+#menu .card-title svg {
+  margin-top: -0.25em !important;
+}
+
+@media only screen and (max-width: 768px) {
+  #menu .col-6 {
+    width: 100%;
+  }
+}
