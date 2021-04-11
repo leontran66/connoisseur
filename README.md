@@ -38,17 +38,14 @@ MONGODB_URI_LOCAL=
 NODE_ENV=
 ```
 
-5. Run the app in development:
+5. Navigate to the `client` folder
+6. Create a `.env` file and add the following variables:
 
 ```
-npm run dev
-```
-
-or in production:
-
-```
-npm run build
-npm run serve
+REACT_APP_AUTH0_AUDIENCE=
+REACT_APP_AUTH0_DOMAIN=
+REACT_APP_AUTH0_CLIENT_ID=
+REACT_APP_AUTH0_CLIENT_SECRET=
 ```
 
 ## Server
