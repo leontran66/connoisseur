@@ -2,6 +2,21 @@
 
 An app for reviewing restaurants in Brisbane.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Server](#server)
+  - [Dependencies](#dependencies)
+  - [Database Structure](#database-structure)
+    - [User](#user)
+    - [Business](#business)
+    - [Menu](#menu)
+    - [Review](#review)
+  - [Routes](#routes)
+- [Client](#client)
+  - [Dependencies](#dependencies-1)
+  - [Pages](#pages)
+
 ## Installation
 
 1. Copy this repository
@@ -51,7 +66,7 @@ npm run serve
 [morgan](https://github.com/expressjs/morgan) - Logs HTTP requests<br />
 [winston](https://github.com/winstonjs/winston) - Logging library<br />
 
-### Database Models
+### Database Structure
 
 #### User
 
