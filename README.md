@@ -55,7 +55,7 @@ npm run serve
 
 ### Dependencies
 
-[auth0](https://github.com/auth0/auth0-react) - Auth0 SDK for authentication/authorization
+[auth0](https://github.com/auth0/auth0-react) - Auth0 SDK for authentication/authorization<br />
 [bootstrap](https://github.com/twbs/bootstrap) - Adds prebuilt front-end components<br />
 [dotenv](https://github.com/motdotla/dotenv) - Loads environment variables<br />
 [react](https://github.com/facebook/react) - JavaScript library for user interface<br />
