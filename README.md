@@ -52,3 +52,12 @@ npm run serve
 [winston](https://github.com/winstonjs/winston) - Logging library<br />
 
 ## Client
+
+### Dependencies
+
+[auth0](https://github.com/auth0/auth0-react) - Auth0 SDK for authentication/authorization
+[bootstrap](https://github.com/twbs/bootstrap) - Adds prebuilt front-end components<br />
+[dotenv](https://github.com/motdotla/dotenv) - Loads environment variables<br />
+[react](https://github.com/facebook/react) - JavaScript library for user interface<br />
+[react-router-dom](https://github.com/ReactTraining/react-router) - Adds navigational components for React<br />
+[react-spinners](https://github.com/davidhu2000/react-spinners) - Adds loading components for React<br />
