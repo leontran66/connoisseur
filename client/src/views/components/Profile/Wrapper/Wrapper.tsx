@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-import Redirect from '../../common/Redirect/Redirect';
+import Spinner from '../../common/Spinner/Spinner';
 
 type Props = {
   children: React.ReactNode
@@ -17,7 +17,7 @@ const Wrapper = ({ children }: Props) => {
             {children}
           </>
         ) : (
-          <div>Loading...</div>
+          <Spinner />
         )
       }
     </>
@@ -25,5 +25,5 @@ const Wrapper = ({ children }: Props) => {
 };
 
 export default withAuthenticationRequired(Wrapper, {
-  onRedirecting: () => (<Redirect />),
+  onRedirecting: () => (<Spinner />),
 });

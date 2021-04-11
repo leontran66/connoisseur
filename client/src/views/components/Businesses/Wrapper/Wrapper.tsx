@@ -7,10 +7,15 @@ type Props = {
 
 const Wrapper = ({ children }: Props) => {
   const query = new URLSearchParams(useLocation().search);
+  const search = query.get('search_query');
   const pages = 10;
   let currentPage = 1;
   if (query.get('page')) {
     currentPage = parseInt(query.get('page')!, 10);
+  }
+  let redirect = <Redirect to='/restaurants' />;
+  if (search) {
+    redirect = <Redirect to={`/restaurants?search_query=${search}`} />;
   }
 
   return (
@@ -21,7 +26,7 @@ const Wrapper = ({ children }: Props) => {
             {children}
           </>
         ) : (
-          <Redirect to='/404' />
+          redirect
         )
       }
     </>
