@@ -1,4 +1,4 @@
 {
-  "name": "profile",
-  "main": "./Profile.tsx"
+  "name": "wrapper",
+  "main": "./Wrapper.tsx"
 }

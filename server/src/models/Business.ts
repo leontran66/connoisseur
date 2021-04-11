@@ -1,6 +1,7 @@
 import { Document, model, Schema } from 'mongoose';
 
 export type BusinessDocument = Document & {
+  email: string;
   abn: string;
   name: string;
   phone: string;
@@ -14,6 +15,7 @@ export type BusinessDocument = Document & {
 };
 
 const businessSchema = new Schema<BusinessDocument>({
+  email: { type: String, unique: true, ref: 'User' },
   abn: { type: String, unique: true },
   name: String,
   phone: String,
