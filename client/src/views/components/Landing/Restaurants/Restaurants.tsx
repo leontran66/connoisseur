@@ -36,7 +36,7 @@ const Restaurants = () => (
               <br />
               31231231
             </p>
-            <a href='/restaurants?search_query=WoW' className='btn btn-primary'>Read More</a>
+            <a href='/restaurants?search_query=WoW' className='btn btn-light'>Read More</a>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@ const Restaurants = () => (
               <br />
               31231231
             </p>
-            <a href='/restaurants?search_query=WoW' className='btn btn-primary'>Read More</a>
+            <a href='/restaurants?search_query=WoW' className='btn btn-light'>Read More</a>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@ const Restaurants = () => (
               <br />
               31231231
             </p>
-            <a href='/restaurants?search_query=WoW' className='btn btn-primary'>Read More</a>
+            <a href='/restaurants?search_query=WoW' className='btn btn-light'>Read More</a>
           </div>
         </div>
       </div>
