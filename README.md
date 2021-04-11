@@ -25,10 +25,12 @@ An app for reviewing restaurants in Brisbane.
 ```
 cd server
 npm install
+cd ../client
+npm install
 ```
 
 3. Navigate to the `server` folder
-4. Create a `.env` file and add the following variables:
+4. Create a `.env` file with the following variables:
 
 ```
 AUTH0_AUDIENCE=
@@ -39,7 +41,7 @@ NODE_ENV=
 ```
 
 5. Navigate to the `client` folder
-6. Create a `.env` file and add the following variables:
+6. Create a `.env` file with the following variables:
 
 ```
 REACT_APP_AUTH0_AUDIENCE=
