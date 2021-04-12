@@ -6,7 +6,7 @@ const Business = () => (
     <div className='mt-4 ms-2'>
       You current do not have a business profile.
       <br />
-      <button type='button' className='btn btn-dark mt-3'>Create Business</button>
+      <a href='/profile/new' className='btn btn-dark mt-3'>Create Business</a>
     </div>
   </div>
 );

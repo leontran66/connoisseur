@@ -1,14 +1,22 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import './Menu.css';
 
 const Menu = () => {
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
+
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
   };
 
   return (
-    <div className='menu-form m-3'>
+    <div className='menu-form mx-auto'>
+      <h1>Add New Menu Item</h1>
       <form>
         <div className='mb-3'>
           <label htmlFor='name' className='form-label'>Name</label>
@@ -43,6 +51,7 @@ const Menu = () => {
           <label htmlFor='description' className='form-label'>Description</label>
           <textarea className='form-control' id='description' name='description' rows={3} />
         </div>
+        <a href='#!' className='btn btn-dark me-2' onClick={() => goBack()}>Cancel</a>
         <button type='submit' className='btn btn-dark' onClick={(e) => onSubmit(e)}>Submit</button>
       </form>
     </div>

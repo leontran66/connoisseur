@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 import business from '../pages/business';
 import businesses from '../pages/businesses';
+import newBusiness from '../pages/newBusiness';
+import newMenu from '../pages/newMenu';
 import notfound from '../pages/notfound';
 import profile from '../pages/profile';
 import defaultRoute from './default';
@@ -20,7 +22,9 @@ const App = () => (
   >
     <Router>
       <Switch>
+        <Route exact path='/menu/new' component={newMenu} />
         <Route exact path='/profile' component={profile} />
+        <Route exact path='/profile/new' component={newBusiness} />
         <Route exact path='/restaurants/:id' component={business} />
         <Route exact path='/restaurants' component={businesses} />
         <Route exact path='/' component={defaultRoute} />

@@ -1,14 +1,22 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import './Business.css';
 
 const Business = () => {
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
+
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
   };
 
   return (
-    <div className='business-form m-3'>
+    <div className='business-form mx-auto'>
+      <h1>Create Restaurant Profile</h1>
       <form>
         <div className='mb-3'>
           <label htmlFor='name' className='form-label'>Name</label>
@@ -40,7 +48,7 @@ const Business = () => {
           <div className='col-3'>
             <label htmlFor='state' className='form-label'>State</label>
             <select className='form-select' id='state' name='state' aria-label='State select'>
-              <option selected>Select...</option>
+              <option defaultChecked>Select...</option>
               <option value='ACT'>ACT</option>
               <option value='NSW'>NSW</option>
               <option value='NT'>NT</option>
@@ -56,6 +64,7 @@ const Business = () => {
             <input type='text' className='form-control' id='postCode' name='postCode' />
           </div>
         </div>
+        <a href='#!' className='btn btn-dark me-2' onClick={() => goBack()}>Cancel</a>
         <button type='submit' className='btn btn-dark' onClick={(e) => onSubmit(e)}>Submit</button>
       </form>
     </div>
