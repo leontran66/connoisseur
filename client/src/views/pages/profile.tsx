@@ -4,7 +4,6 @@ import Container from '../components/common/Container';
 import Footer from '../components/common/Footer';
 import Navbar from '../components/common/Navbar';
 import Profile from '../components/Profile/Profile';
-import Settings from '../components/Profile/Settings';
 import Tabs from '../components/Profile/Tabs';
 import Wrapper from '../components/Profile/Wrapper';
 
@@ -16,7 +15,6 @@ const ProfilePage = () => (
         <Tabs>
           <Profile />
           <Business />
-          <Settings />
         </Tabs>
       </Wrapper>
     </Container>

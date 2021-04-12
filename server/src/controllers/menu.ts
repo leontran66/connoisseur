@@ -7,7 +7,7 @@ import { Menu } from '../models/Menu';
 
 export const createMenu = async (req: Request, res: Response): Promise<Response> => {
   const {
-    name, category, options, description, spicy, vegetarian, vegan, price,
+    name, category, options, description, spicy, vegetarian, price,
   } = req.body;
   // const { id } = req.user;
 
@@ -24,7 +24,6 @@ export const createMenu = async (req: Request, res: Response): Promise<Response>
   await body('description').trim().escape().run(req);
   await body('spicy').isBoolean().run(req);
   await body('vegetarian').isBoolean().run(req);
-  await body('vegan').isBoolean().run(req);
   await body('price').custom(isValidPrice)
     .withMessage('Price is invalid.')
     .run(req);
@@ -41,7 +40,6 @@ export const createMenu = async (req: Request, res: Response): Promise<Response>
     description,
     spicy,
     vegetarian,
-    vegan,
     price,
   });
 
@@ -56,7 +54,7 @@ export const createMenu = async (req: Request, res: Response): Promise<Response>
 
 export const updateMenu = async (req: Request, res: Response): Promise<Response> => {
   const {
-    name, category, options, description, spicy, vegetarian, vegan, price,
+    name, category, options, description, spicy, vegetarian, price,
   } = req.body;
   const { id } = req.params;
 
@@ -77,7 +75,6 @@ export const updateMenu = async (req: Request, res: Response): Promise<Response>
   await body('description').trim().escape().run(req);
   await body('spicy').isBoolean().run(req);
   await body('vegetarian').isBoolean().run(req);
-  await body('vegan').isBoolean().run(req);
   await body('price').custom(isValidPrice)
     .withMessage('Price is invalid.')
     .run(req);
@@ -101,7 +98,6 @@ export const updateMenu = async (req: Request, res: Response): Promise<Response>
     description,
     spicy,
     vegetarian,
-    vegan,
     price,
   });
 

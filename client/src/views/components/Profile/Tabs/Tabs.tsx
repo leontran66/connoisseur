@@ -13,9 +13,6 @@ const Tabs = ({ children }: Props) => (
       <li className='nav-item' role='presentation'>
         <button className='nav-link' id='business-tab' data-bs-toggle='tab' data-bs-target='#business' type='button' role='tab' aria-controls='business' aria-selected='false'>Business</button>
       </li>
-      <li className='nav-item' role='presentation'>
-        <button className='nav-link' id='settings-tab' data-bs-toggle='tab' data-bs-target='#settings' type='button' role='tab' aria-controls='settings' aria-selected='false'>Settings</button>
-      </li>
     </ul>
     <div className='tab-content' id='userTabContent'>
       {children}

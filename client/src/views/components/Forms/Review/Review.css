@@ -1,0 +1,24 @@
+.rating-input {
+  width: 25%;
+}
+
+.review-input {
+  width: 48%;
+  margin-top: -1em;
+}
+
+.review-input textarea {
+  resize: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  .review-input {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 958px) {
+  .rating-input {
+    width: 50%;
+  }
+}

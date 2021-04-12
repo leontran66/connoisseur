@@ -1,6 +1,8 @@
 .heading .col-9 img {
   display: inline-block;
-  margin: -3em 1em 1em 0;
+  max-width: 250px;
+  max-height: 250px;
+  margin: -5.5em 1em 1em 0;
 }
 
 .heading .col-9 .heading-details {

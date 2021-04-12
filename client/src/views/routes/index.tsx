@@ -8,6 +8,7 @@ import profile from '../pages/profile';
 import defaultRoute from './default';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.esm.min.js';
+import 'starability/starability-minified/starability-grow.min.css';
 
 const App = () => (
   <Auth0Provider

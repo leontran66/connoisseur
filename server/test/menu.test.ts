@@ -22,7 +22,7 @@ describe('the menu route', () => {
 
   describe('POST /api/menu route', () => {
     test('all invalid inputs should return 400 Bad Request', async () => {
-      expect.assertions(7);
+      expect.assertions(6);
       const res = await request(app).post('/api/menu')
         .send({
           name: '',
@@ -35,8 +35,7 @@ describe('the menu route', () => {
       expect(res.body.message[1].msg).toBe('Category is required.');
       expect(res.body.message[2].msg).toBe('Invalid value');
       expect(res.body.message[3].msg).toBe('Invalid value');
-      expect(res.body.message[4].msg).toBe('Invalid value');
-      expect(res.body.message[5].msg).toBe('Price is invalid.');
+      expect(res.body.message[4].msg).toBe('Price is invalid.');
     });
 
     test('correct input should return 200 OK', async () => {
@@ -75,7 +74,7 @@ describe('the menu route', () => {
     });
 
     test('all invalid inputs should return 400 Bad Request', async () => {
-      expect.assertions(7);
+      expect.assertions(6);
       const res = await request(app).patch(`/api/menu/${menuID}`)
         .send({
           name: '',
@@ -88,8 +87,7 @@ describe('the menu route', () => {
       expect(res.body.message[1].msg).toBe('Category is required.');
       expect(res.body.message[2].msg).toBe('Invalid value');
       expect(res.body.message[3].msg).toBe('Invalid value');
-      expect(res.body.message[4].msg).toBe('Invalid value');
-      expect(res.body.message[5].msg).toBe('Price is invalid.');
+      expect(res.body.message[4].msg).toBe('Price is invalid.');
     });
 
     test('id of non-existent menu should return 404 Not Found', async () => {

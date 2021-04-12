@@ -1,4 +1,6 @@
 import React from 'react';
+import Chilli from './chilli.png';
+import Leaf from './leaf.png';
 import './Menu.css';
 
 const Menu = () => (
@@ -10,7 +12,9 @@ const Menu = () => (
             <h5 className='card-title mb-1'>
               Menu Item&nbsp;
               <span>
-                SPC VGN VEG
+                <img src={Chilli} alt='Spicy' width={18} height={18} />
+                &nbsp;&nbsp;
+                <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
                 $12.45
@@ -28,7 +32,9 @@ const Menu = () => (
             <h5 className='card-title mb-1'>
               Menu Item&nbsp;
               <span>
-                SPC VGN VEG
+                <img src={Chilli} alt='Spicy' width={18} height={18} />
+                &nbsp;&nbsp;
+                <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
                 $12.45
@@ -46,7 +52,9 @@ const Menu = () => (
             <h5 className='card-title mb-1'>
               Menu Item&nbsp;
               <span>
-                SPC VGN VEG
+                <img src={Chilli} alt='Spicy' width={18} height={18} />
+                &nbsp;&nbsp;
+                <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
                 $12.45
@@ -66,7 +74,9 @@ const Menu = () => (
             <h5 className='card-title mb-1'>
               Menu Item&nbsp;
               <span>
-                SPC VGN VEG
+                <img src={Chilli} alt='Spicy' width={18} height={18} />
+                &nbsp;&nbsp;
+                <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
                 $12.45
@@ -84,7 +94,9 @@ const Menu = () => (
             <h5 className='card-title mb-1'>
               Menu Item&nbsp;
               <span>
-                SPC VGN VEG
+                <img src={Chilli} alt='Spicy' width={18} height={18} />
+                &nbsp;&nbsp;
+                <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
                 $12.45
@@ -102,7 +114,9 @@ const Menu = () => (
             <h5 className='card-title mb-1'>
               Menu Item&nbsp;
               <span>
-                SPC VGN VEG
+                <img src={Chilli} alt='Spicy' width={18} height={18} />
+                &nbsp;&nbsp;
+                <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
                 $12.45

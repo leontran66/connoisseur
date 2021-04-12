@@ -1,3 +1,7 @@
 .footer {
   border-radius: 0 !important;
 }
+
+.footer-hidden {
+  display: none;
+}

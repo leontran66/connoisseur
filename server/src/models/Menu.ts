@@ -7,7 +7,6 @@ export type MenuDocument = Document & {
   description: string;
   spicy: boolean;
   vegetarian: boolean;
-  vegan: boolean;
   price: number;
 };
 
@@ -18,7 +17,6 @@ const menuSchema = new Schema<MenuDocument>({
   description: String,
   spicy: Boolean,
   vegetarian: Boolean,
-  vegan: Boolean,
   price: Number,
 });
 

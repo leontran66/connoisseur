@@ -5,6 +5,7 @@ import Heading from '../components/Business/Heading';
 import Menu from '../components/Business/Menu';
 import Navbar from '../components/common/Navbar';
 import Reviews from '../components/Business/Reviews';
+import ReviewForm from '../components/Forms/Review';
 import Tabs from '../components/Business/Tabs';
 
 const BusinessPage = () => (
@@ -14,7 +15,9 @@ const BusinessPage = () => (
       <Heading />
       <Tabs>
         <Menu />
-        <Reviews />
+        <Reviews>
+          <ReviewForm />
+        </Reviews>
       </Tabs>
     </Container>
     <Footer />

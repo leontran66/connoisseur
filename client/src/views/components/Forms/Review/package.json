@@ -1,0 +1,4 @@
+{
+  "name": "review",
+  "main": "./Review.tsx"
+}
