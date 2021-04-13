@@ -4,7 +4,7 @@ import React, {
 import { useHistory, useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import Spinner from '../common/Spinner/Spinner';
+import Spinner from '../../common/Spinner/Spinner';
 
 type Props = {
   children: any;
@@ -24,7 +24,7 @@ const Wrapper = ({ children }: Props) => {
   useEffect(() => {
     const getBusiness = async () => {
       const token = await getAccessTokenSilently({
-        audience: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/`,
+        audience: `${process.env.REACT_APP_AUTH0_AUDIENCE}`,
         scope: 'read:business',
       });
 
@@ -34,7 +34,7 @@ const Wrapper = ({ children }: Props) => {
         },
       };
 
-      await axios.get(`http://localhost:5000/api/business/${id}`, config)
+      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/business/${id}`, config)
         .then((res) => {
           const {
             name, phone, fax, streetAddress, suburb, state, postCode, menu, reviews,

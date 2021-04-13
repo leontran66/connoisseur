@@ -36,7 +36,7 @@ const Business = () => {
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     const token = await getAccessTokenSilently({
-      audience: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/`,
+      audience: `${process.env.REACT_APP_AUTH0_AUDIENCE}`,
       scope: 'write:business',
     });
     const config = {
@@ -55,7 +55,7 @@ const Business = () => {
       state,
       postCode,
     };
-    await axios.post('http://localhost:5000/api/business', body, config);
+    await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/business`, body, config);
     history.push('/profile');
   };
 
