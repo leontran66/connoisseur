@@ -29,7 +29,7 @@ export const getBusiness = async (req: Request, res: Response): Promise<Response
 
 export const createBusiness = async (req: Request, res: Response): Promise<Response> => {
   const {
-    name, abn, phone, fax, streetAddress, suburb, state, postCode,
+    user, name, abn, phone, fax, streetAddress, suburb, state, postCode,
   } = req.body;
 
   await body('name').notEmpty().trim().escape()
@@ -71,6 +71,7 @@ export const createBusiness = async (req: Request, res: Response): Promise<Respo
   }
 
   await Business.create({
+    user,
     name,
     abn,
     phone,
@@ -88,7 +89,7 @@ export const createBusiness = async (req: Request, res: Response): Promise<Respo
 
 export const updateBusiness = async (req: Request, res: Response): Promise<Response> => {
   const {
-    name, abn, phone, fax, streetAddress, suburb, state, postCode,
+    user, name, abn, phone, fax, streetAddress, suburb, state, postCode,
   } = req.body;
   const { id } = req.params;
 
@@ -132,6 +133,9 @@ export const updateBusiness = async (req: Request, res: Response): Promise<Respo
   const business = await Business.findById(id);
   if (!business) {
     return res.status(404).json({ message: [{ msg: 'Your business was not found.', param: 'error' }] });
+  }
+  if (user !== business.user) {
+    return res.status(401).json({ message: [{ msg: 'You are unauthorized to make changes to that business.', param: 'error' }] });
   }
   if (business && business.abn !== abn) {
     return res.status(400).json({ message: [{ msg: 'ABN cannot be altered.', param: 'abn' }] });

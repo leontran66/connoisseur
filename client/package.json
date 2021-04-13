@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.4.0",
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta3",
     "bootstrap-icons": "^1.4.1",
     "dotenv": "^8.2.0",

@@ -13,7 +13,7 @@ const Menu = () => (
               Menu Item&nbsp;
               <span>
                 <img src={Chilli} alt='Spicy' width={18} height={18} />
-                &nbsp;&nbsp;
+                  &nbsp;&nbsp;
                 <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
@@ -23,7 +23,7 @@ const Menu = () => (
             <p className='card-text'>
               Small, Regular, Large
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor tortor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor.
             </p>
           </div>
         </div>
@@ -33,7 +33,7 @@ const Menu = () => (
               Menu Item&nbsp;
               <span>
                 <img src={Chilli} alt='Spicy' width={18} height={18} />
-                &nbsp;&nbsp;
+                  &nbsp;&nbsp;
                 <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
@@ -43,7 +43,7 @@ const Menu = () => (
             <p className='card-text'>
               Small, Regular, Large
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor tortor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor.
             </p>
           </div>
         </div>
@@ -53,7 +53,7 @@ const Menu = () => (
               Menu Item&nbsp;
               <span>
                 <img src={Chilli} alt='Spicy' width={18} height={18} />
-                &nbsp;&nbsp;
+                  &nbsp;&nbsp;
                 <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
@@ -63,7 +63,7 @@ const Menu = () => (
             <p className='card-text'>
               Small, Regular, Large
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor tortor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor.
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ const Menu = () => (
               Menu Item&nbsp;
               <span>
                 <img src={Chilli} alt='Spicy' width={18} height={18} />
-                &nbsp;&nbsp;
+                  &nbsp;&nbsp;
                 <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
@@ -85,7 +85,7 @@ const Menu = () => (
             <p className='card-text'>
               Small, Regular, Large
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor tortor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor.
             </p>
           </div>
         </div>
@@ -95,7 +95,7 @@ const Menu = () => (
               Menu Item&nbsp;
               <span>
                 <img src={Chilli} alt='Spicy' width={18} height={18} />
-                &nbsp;&nbsp;
+                  &nbsp;&nbsp;
                 <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
@@ -105,7 +105,7 @@ const Menu = () => (
             <p className='card-text'>
               Small, Regular, Large
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor tortor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor.
             </p>
           </div>
         </div>
@@ -115,7 +115,7 @@ const Menu = () => (
               Menu Item&nbsp;
               <span>
                 <img src={Chilli} alt='Spicy' width={18} height={18} />
-                &nbsp;&nbsp;
+                  &nbsp;&nbsp;
                 <img src={Leaf} alt='Vegetarian' />
               </span>
               <span className='float-end'>
@@ -125,7 +125,7 @@ const Menu = () => (
             <p className='card-text'>
               Small, Regular, Large
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor tortor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tortor.
             </p>
           </div>
         </div>

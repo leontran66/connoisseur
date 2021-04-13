@@ -7,18 +7,21 @@ import Navbar from '../components/common/Navbar';
 import Reviews from '../components/Business/Reviews';
 import ReviewForm from '../components/Forms/Review';
 import Tabs from '../components/Business/Tabs';
+import Wrapper from '../components/Business/Wrapper';
 
 const BusinessPage = () => (
   <>
     <Navbar />
     <Container>
-      <Heading />
-      <Tabs>
-        <Menu />
-        <Reviews>
-          <ReviewForm />
-        </Reviews>
-      </Tabs>
+      <Wrapper>
+        <Heading />
+        <Tabs>
+          <Menu />
+          <Reviews>
+            <ReviewForm />
+          </Reviews>
+        </Tabs>
+      </Wrapper>
     </Container>
     <Footer />
   </>
