@@ -54,7 +54,7 @@ const Wrapper = ({ children }: Props) => {
           setDataLoaded(true);
         })
         .catch(() => {
-          history.push('/404');
+          history.replace('/404');
         });
     };
 

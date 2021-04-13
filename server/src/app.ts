@@ -4,6 +4,8 @@ import helmet from 'helmet';
 import corsOptions from './config/corsOptions';
 import helmetOptions from './config/helmetOptions';
 import morgan from './config/morgan';
+import checkJwt from './util/checkJwt';
+import scopes from './util/scopes';
 import { NODE_ENV } from './config/secrets';
 
 import errorHandler from './util/errorHandler';
@@ -24,8 +26,8 @@ app.use(helmet(helmetOptions));
 app.use(morgan);
 
 app.get('/api/business', business.getAllBusinesses);
-app.get('/api/business/:id', business.getBusiness);
-app.post('/api/business', business.createBusiness);
+app.get('/api/business/:id', checkJwt, scopes(['read:business']), business.getBusiness);
+app.post('/api/business', checkJwt, scopes(['write:business']), business.createBusiness);
 app.patch('/api/business/:id', business.updateBusiness);
 app.delete('/api/business/:id', business.deleteBusiness);
 app.post('/api/menu', menu.createMenu);
