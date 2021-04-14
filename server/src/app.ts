@@ -1,3 +1,4 @@
+/// <reference path="./types/request.d.ts" />
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
@@ -24,10 +25,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet(helmetOptions));
 app.use(morgan);
+app.use(checkJwt);
 
 app.get('/api/business', business.getAllBusinesses);
-app.get('/api/business/:id', checkJwt, scopes(['read:business']), business.getBusiness);
-app.post('/api/business', checkJwt, scopes(['write:business']), business.createBusiness);
+app.get('/api/business/me', scopes(['read:business']), business.getOwnBusiness);
+app.get('/api/business/:id', scopes(['read:business']), business.getBusiness);
+app.post('/api/business', scopes(['write:business']), business.createBusiness);
 app.patch('/api/business/:id', business.updateBusiness);
 app.delete('/api/business/:id', business.deleteBusiness);
 app.post('/api/menu', menu.createMenu);

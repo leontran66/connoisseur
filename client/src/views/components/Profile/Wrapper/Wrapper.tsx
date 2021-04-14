@@ -1,21 +1,77 @@
-import React from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import axios from 'axios';
 import Spinner from '../../common/Spinner/Spinner';
 
 type Props = {
-  children: React.ReactNode
+  children: React.ReactElement
 }
 
 const Wrapper = ({ children }: Props) => {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
+  const history = useHistory();
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  useEffect(() => {
+    const getBusiness = async () => {
+      const token = await getAccessTokenSilently({
+        audience: `${process.env.REACT_APP_AUTH0_AUDIENCE}`,
+        scope: 'read:business',
+      });
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/business/me`, config)
+        .then((res) => {
+          const {
+            name, abn, phone, fax, streetAddress, suburb, state, postCode, menu, reviews,
+          } = res.data.business;
+          setBusinessData({
+            ...businessData,
+            name,
+            abn,
+            phone,
+            fax,
+            streetAddress,
+            suburb,
+            state,
+            postCode,
+            menu,
+            reviews,
+          });
+          setDataLoaded(true);
+        })
+        .catch(() => {
+          history.replace('/404');
+        });
+    };
+
+    getBusiness();
+  }, [getAccessTokenSilently]);
+
+  const [businessData, setBusinessData] = useState({
+    name: '',
+    abn: '',
+    phone: '',
+    fax: '',
+    streetAddress: '',
+    suburb: '',
+    state: '',
+    postCode: '',
+    menu: [],
+    reviews: [],
+  });
 
   return (
     <>
       {
-        !isLoading && isAuthenticated ? (
-          <>
-            {children}
-          </>
+        !isLoading && isAuthenticated && dataLoaded ? (
+          React.cloneElement(children, { business: businessData })
         ) : (
           <Spinner />
         )

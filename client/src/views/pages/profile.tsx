@@ -7,19 +7,32 @@ import Profile from '../components/Profile/Profile';
 import Tabs from '../components/Profile/Tabs';
 import Wrapper from '../components/Profile/Wrapper';
 
-const ProfilePage = () => (
-  <>
-    <Navbar />
-    <Container>
-      <Wrapper>
-        <Tabs>
-          <Profile />
-          <Business />
-        </Tabs>
-      </Wrapper>
-    </Container>
-    <Footer />
-  </>
-);
+const ProfilePage = () => {
+  const businessDefault = {
+    name: '',
+    abn: '',
+    phone: '',
+    fax: '',
+    streetAddress: '',
+    suburb: '',
+    state: '',
+    postCode: '',
+  };
+
+  return (
+    <>
+      <Navbar />
+      <Container>
+        <Wrapper>
+          <Tabs business={businessDefault}>
+            <Profile />
+            <Business business={businessDefault} />
+          </Tabs>
+        </Wrapper>
+      </Container>
+      <Footer />
+    </>
+  );
+};
 
 export default ProfilePage;

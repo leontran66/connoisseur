@@ -2,13 +2,22 @@ import React from 'react';
 import NoImage from '../../../../images/no-image.png';
 import './Heading.css';
 
-const Heading = (props: any) => {
-  const {
-    business: {
-      name, phone, fax, streetAddress, suburb, state, postCode,
-    },
-  } = props;
+type Props = {
+  business: {
+    name: string;
+    phone: string;
+    fax: string;
+    streetAddress: string;
+    suburb: string;
+    state: string;
+    postCode: string;
+  }
+}
 
+const Heading = ({ business }: Props) => {
+  const {
+    name, phone, fax, streetAddress, suburb, state, postCode,
+  } = business;
   return (
     <div className='heading pt-3'>
       <div className='row justify-content-between'>

@@ -7,7 +7,7 @@ import axios from 'axios';
 import Spinner from '../../common/Spinner/Spinner';
 
 type Props = {
-  children: any;
+  children: React.ReactElement[];
 }
 
 type Params = {

@@ -9,8 +9,9 @@
         "node_modules/*"
       ]
     },
+    "typeRoots": ["./src/types", "./node_modules/@types"],
     "target": "ES6",
-    "types": ["jest", "node"],
+    "types": ["jest", "node", "express"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

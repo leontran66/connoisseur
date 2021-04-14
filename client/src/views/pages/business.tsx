@@ -9,22 +9,34 @@ import ReviewForm from '../components/Forms/Review';
 import Tabs from '../components/Business/Tabs';
 import Wrapper from '../components/Business/Wrapper';
 
-const BusinessPage = () => (
-  <>
-    <Navbar />
-    <Container>
-      <Wrapper>
-        <Heading />
-        <Tabs>
-          <Menu />
-          <Reviews>
-            <ReviewForm />
-          </Reviews>
-        </Tabs>
-      </Wrapper>
-    </Container>
-    <Footer />
-  </>
-);
+const BusinessPage = () => {
+  const businessDefault = {
+    name: '',
+    phone: '',
+    fax: '',
+    streetAddress: '',
+    suburb: '',
+    state: '',
+    postCode: '',
+  };
+
+  return (
+    <>
+      <Navbar />
+      <Container>
+        <Wrapper>
+          <Heading business={businessDefault} />
+          <Tabs>
+            <Menu />
+            <Reviews>
+              <ReviewForm />
+            </Reviews>
+          </Tabs>
+        </Wrapper>
+      </Container>
+      <Footer />
+    </>
+  );
+};
 
 export default BusinessPage;

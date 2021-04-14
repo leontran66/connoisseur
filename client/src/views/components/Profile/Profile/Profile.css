@@ -1,9 +1,9 @@
-#settings .table {
+#profile .table {
   width: 50%;
 }
 
 @media only screen and (max-width: 768px) {
-  #settings .table {
+  #profile .table {
     width: 100%;
   }
 }

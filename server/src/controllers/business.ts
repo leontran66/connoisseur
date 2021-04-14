@@ -15,6 +15,18 @@ export const getAllBusinesses = async (req: Request, res: Response): Promise<Res
   return res.status(200).json({ businesses });
 };
 
+export const getOwnBusiness = async (req: Request, res: Response): Promise<Response> => {
+  const user = req.user.sub;
+  if (typeof user === 'string') {
+    const business = await Business.findOne({ user });
+    if (!business) {
+      return res.status(404).json({ message: [{ msg: 'The business you are looking for does not exist.', param: 'error' }] });
+    }
+    return res.status(200).json({ business });
+  }
+  return res.status(404).json({ message: [{ msg: 'The business you are looking for does not exist.', param: 'error' }] });
+};
+
 export const getBusiness = async (req: Request, res: Response): Promise<Response> => {
   const { id } = req.params;
   if (!isValidObjectId(id)) {
@@ -88,8 +100,9 @@ export const createBusiness = async (req: Request, res: Response): Promise<Respo
 };
 
 export const updateBusiness = async (req: Request, res: Response): Promise<Response> => {
+  const user = req.user.sub;
   const {
-    user, name, abn, phone, fax, streetAddress, suburb, state, postCode,
+    name, abn, phone, fax, streetAddress, suburb, state, postCode,
   } = req.body;
   const { id } = req.params;
 
@@ -156,6 +169,7 @@ export const updateBusiness = async (req: Request, res: Response): Promise<Respo
 };
 
 export const deleteBusiness = async (req: Request, res: Response): Promise<Response> => {
+  const user = req.user.sub;
   const { id } = req.params;
 
   if (!isValidObjectId(id)) {
@@ -165,6 +179,9 @@ export const deleteBusiness = async (req: Request, res: Response): Promise<Respo
   const business = await Business.findById(id);
   if (!business) {
     return res.status(404).json({ message: [{ msg: 'Your business was not found.', param: 'error' }] });
+  }
+  if (user !== business.user) {
+    return res.status(401).json({ message: [{ msg: 'You are unauthorized to make changes to that business.', param: 'error' }] });
   }
 
   await Menu.deleteMany({ _id: { $in: [business.menu] } });

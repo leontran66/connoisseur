@@ -7,14 +7,14 @@ const Profile = () => {
 
   return (
     <div className='tab-pane fade show active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
-      <table className='table table-borderless mt-3'>
+      <table className='table table-borderless mt-3 ms-2'>
         <tbody>
           <tr>
-            <td>Name:</td>
+            <th>Name:</th>
             <td>{user.name}</td>
           </tr>
           <tr>
-            <td>Email:</td>
+            <th>Email:</th>
             <td>{user.email}</td>
           </tr>
         </tbody>
