@@ -2,10 +2,13 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './Pagination.css';
 
-const Pagination = () => {
+type Props = {
+  pages: number;
+}
+
+const Pagination = ({ pages }: Props) => {
   const query = new URLSearchParams(useLocation().search);
   const search = query.get('search_query');
-  const pages = 10; // TODO: get total pages from props
   let currentPage = 1;
   if (query.get('page')) {
     currentPage = parseInt(query.get('page')!, 10);

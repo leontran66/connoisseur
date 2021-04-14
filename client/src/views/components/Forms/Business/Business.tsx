@@ -109,8 +109,8 @@ const Business = () => {
             <input type='text' className='form-control' id='postCode' name='postCode' onChange={(e) => onChange(e)} />
           </div>
         </div>
-        <button type='button' className='btn btn-dark me-2' onClick={() => goBack()}>Cancel</button>
         <button type='submit' className='btn btn-dark' onClick={(e) => onSubmit(e)}>Submit</button>
+        <button type='button' className='btn btn-dark me-2' onClick={() => goBack()}>Cancel</button>
       </form>
     </div>
   );

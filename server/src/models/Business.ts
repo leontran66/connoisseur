@@ -37,6 +37,14 @@ businessSchema.pre('save', function save(next) {
 
 businessSchema.pre('save', function save(next) {
   const business = this as BusinessDocument;
+  if (!business.isModified('abn')) return next();
+  business.abn = business.abn.replace(/ /g, '');
+  business.abn = `${business.abn.slice(0, 2)} ${business.abn.slice(2, 5)} ${business.abn.slice(5, 8)} ${business.abn.slice(8, 11)}`;
+  return next();
+});
+
+businessSchema.pre('save', function save(next) {
+  const business = this as BusinessDocument;
   if (!business.isModified('streetAddress')) return next();
   business.streetAddress = business.streetAddress.toLowerCase();
   return next();

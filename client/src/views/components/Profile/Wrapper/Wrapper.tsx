@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import axios from 'axios';
 import Spinner from '../../common/Spinner/Spinner';
@@ -10,7 +9,6 @@ type Props = {
 
 const Wrapper = ({ children }: Props) => {
   const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
-  const history = useHistory();
   const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
@@ -47,7 +45,7 @@ const Wrapper = ({ children }: Props) => {
           setDataLoaded(true);
         })
         .catch(() => {
-          history.replace('/404');
+          setDataLoaded(true);
         });
     };
 

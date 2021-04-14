@@ -2,13 +2,29 @@ import React from 'react';
 import NoImage from '../../../../images/no-image.png';
 import './Result.css';
 
-const Result = () => (
+type Props = {
+  business: {
+    name: string;
+    phone: string;
+    fax: string;
+    streetAddress: string;
+    suburb: string;
+    state: string;
+    postCode: string;
+  }
+}
+
+const Result = ({
+  business: {
+    name, phone, fax, streetAddress, suburb, state, postCode,
+  },
+}: Props) => (
   <div className='result card'>
     <div className='card-body border-bottom'>
       <img src={NoImage} className='card-img-top' alt='Teriyaki Tokyo' />
-      <div className='card-text'>
+      <div className='card-text text-capitalize'>
         <h4 className='card-title'>
-          <a href='/restaurants/id' className='card-link'>Business Name</a>
+          <a href='/restaurants/id' className='card-link'>{name}</a>
           <span>
             5.0&nbsp;
             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#f5bd23' className='bi bi-star-fill' viewBox='0 0 16 16'>
@@ -21,17 +37,21 @@ const Result = () => (
         <p className='mb-1'>
           <b>Address:&nbsp;</b>
           <br />
-          1 Hello Street
+          {streetAddress}
           <br />
-          World, QLD, 4123
+          {suburb}
+          ,&nbsp;
+          {state}
+          ,&nbsp;
+          {postCode}
         </p>
         <p className='mb-1'>
           <b>Phone:&nbsp;</b>
-          31231231
+          {phone}
         </p>
         <p>
           <b>Fax:&nbsp;</b>
-          31231231
+          {fax}
         </p>
       </div>
     </div>
