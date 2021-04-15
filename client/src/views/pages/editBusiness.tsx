@@ -4,14 +4,14 @@ import Container from '../components/common/Container';
 import Footer from '../components/common/Footer';
 import Navbar from '../components/common/Navbar';
 
-const NewBusinessPage = () => (
+const EditBusinessPage = () => (
   <>
     <Navbar />
     <Container>
-      <BusinessForm isNew />
+      <BusinessForm isNew={false} />
     </Container>
     <Footer />
   </>
 );
 
-export default NewBusinessPage;
+export default EditBusinessPage;

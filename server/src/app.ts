@@ -25,14 +25,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet(helmetOptions));
 app.use(morgan);
-app.use(checkJwt);
+
+if (NODE_ENV !== 'test') {
+  app.use(checkJwt);
+}
 
 app.get('/api/business', business.getAllBusinesses);
 app.get('/api/business/me', scopes(['read:business']), business.getOwnBusiness);
 app.get('/api/business/:id', scopes(['read:business']), business.getBusiness);
 app.post('/api/business', scopes(['write:business']), business.createBusiness);
-app.patch('/api/business/:id', business.updateBusiness);
-app.delete('/api/business/:id', business.deleteBusiness);
+app.patch('/api/business', scopes(['write:business']), business.updateBusiness);
+app.delete('/api/business', scopes(['write:business']), business.deleteBusiness);
 app.post('/api/menu', menu.createMenu);
 app.patch('/api/menu/:id', menu.updateMenu);
 app.delete('/api/menu/:id', menu.deleteMenu);

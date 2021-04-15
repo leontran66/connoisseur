@@ -2,6 +2,7 @@ import React from 'react';
 import './Business.css';
 
 type Props = {
+  children: React.ReactElement;
   business: {
     name: string;
     abn: string;
@@ -14,7 +15,7 @@ type Props = {
   }
 }
 
-const Business = ({ business }: Props) => {
+const Business = ({ children, business }: Props) => {
   const {
     name, abn, phone, fax, streetAddress, suburb, state, postCode,
   } = business;
@@ -23,7 +24,7 @@ const Business = ({ business }: Props) => {
     <div className='tab-pane fade' id='business' role='tabpanel' aria-labelledby='business-tab'>
       { business.abn !== '' ? (
         <>
-          <a href='/profile/edit' className='btn btn-dark mt-3 ms-2'>Edit Business Profile</a>
+          <a href='/profile/edit' className='btn btn-dark mt-4 ms-3'>Edit Business Profile</a>
           <table className='table table-borderless mt-3 ms-2 text-capitalize'>
             <tbody>
               <tr>
@@ -56,6 +57,17 @@ const Business = ({ business }: Props) => {
               </tr>
             </tbody>
           </table>
+          <div className='fixed-bottom card text-dark bg-light border-danger'>
+            <div className='card-body p-2'>
+              <div className='card-text'>
+                <p className='d-inline-block m-2'>Delete Business</p>
+                <span className='float-end'>
+                  <button type='button' className='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteBusiness'>Delete</button>
+                </span>
+              </div>
+            </div>
+          </div>
+          {children}
         </>
       ) : (
         <div className='mt-4 ms-2'>

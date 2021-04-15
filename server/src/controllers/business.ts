@@ -104,11 +104,6 @@ export const updateBusiness = async (req: Request, res: Response): Promise<Respo
   const {
     name, abn, phone, fax, streetAddress, suburb, state, postCode,
   } = req.body;
-  const { id } = req.params;
-
-  if (!isValidObjectId(id)) {
-    return res.status(400).json({ message: [{ msg: 'That ID is not valid.', param: 'error' }] });
-  }
 
   await body('name').notEmpty().trim().escape()
     .withMessage('Name is required.')
@@ -143,7 +138,7 @@ export const updateBusiness = async (req: Request, res: Response): Promise<Respo
     return res.status(400).json({ message: address });
   }
 
-  const business = await Business.findById(id);
+  const business = await Business.findOne({ user });
   if (!business) {
     return res.status(404).json({ message: [{ msg: 'Your business was not found.', param: 'error' }] });
   }
@@ -154,7 +149,7 @@ export const updateBusiness = async (req: Request, res: Response): Promise<Respo
     return res.status(400).json({ message: [{ msg: 'ABN cannot be altered.', param: 'abn' }] });
   }
 
-  await Business.findByIdAndUpdate(id, {
+  await Business.findOneAndUpdate({ user }, {
     name,
     abn,
     phone,
@@ -170,13 +165,8 @@ export const updateBusiness = async (req: Request, res: Response): Promise<Respo
 
 export const deleteBusiness = async (req: Request, res: Response): Promise<Response> => {
   const user = req.user.sub;
-  const { id } = req.params;
 
-  if (!isValidObjectId(id)) {
-    return res.status(400).json({ message: [{ msg: 'That ID is not valid.', param: 'error' }] });
-  }
-
-  const business = await Business.findById(id);
+  const business = await Business.findOne({ user });
   if (!business) {
     return res.status(404).json({ message: [{ msg: 'Your business was not found.', param: 'error' }] });
   }
@@ -186,7 +176,7 @@ export const deleteBusiness = async (req: Request, res: Response): Promise<Respo
 
   await Menu.deleteMany({ _id: { $in: [business.menu] } });
   // await Review.deleteMany(business.reviews);
-  await Business.findByIdAndDelete(id);
+  await Business.findOneAndDelete({ user });
 
   return res.status(200).json({ message: [{ msg: 'Your business has been deleted.', param: 'success' }] });
 };

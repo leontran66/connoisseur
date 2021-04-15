@@ -23,6 +23,7 @@
     "rules": {
         "import/extensions": ["error", "never"],
         "import/no-extraneous-dependencies": "off",
+        "jsx-a11y/label-has-associated-control": ["error", { "assert": "htmlFor" }],
         "jsx-quotes": ["error", "prefer-single"],
         "linebreak-style": ["error", "windows"],
         "no-console": "off",

@@ -1,0 +1,4 @@
+{
+  "name": "deletebusiness",
+  "main": "./DeleteBusiness.tsx"
+}

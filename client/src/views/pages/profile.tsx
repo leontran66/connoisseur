@@ -1,5 +1,6 @@
 import React from 'react';
 import Business from '../components/Profile/Business';
+import DeleteBusinessForm from '../components/Forms/DeleteBusiness';
 import Container from '../components/common/Container';
 import Footer from '../components/common/Footer';
 import Navbar from '../components/common/Navbar';
@@ -26,7 +27,9 @@ const ProfilePage = () => {
         <Wrapper>
           <Tabs business={businessDefault}>
             <Profile />
-            <Business business={businessDefault} />
+            <Business business={businessDefault}>
+              <DeleteBusinessForm />
+            </Business>
           </Tabs>
         </Wrapper>
       </Container>
