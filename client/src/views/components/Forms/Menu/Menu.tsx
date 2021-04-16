@@ -1,19 +1,64 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import Spinner from '../../common/Spinner';
 import './Menu.css';
 
-const Menu = () => {
-  const { user, getAccessTokenSilently } = useAuth0();
+type Props = {
+  isNew: boolean;
+}
+
+type Params = {
+  id: string;
+}
+
+const Menu = ({ isNew }: Props) => {
+  const { getAccessTokenSilently } = useAuth0();
   const history = useHistory();
   const [dataLoaded, setDataLoaded] = useState(false);
+  let id = '';
+  if (!isNew) {
+    id = useParams<Params>().id;
+  }
 
   useEffect(() => {
-    setDataLoaded(true);
+    async function getMenu() {
+      const token = await getAccessTokenSilently({
+        audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+        scope: 'read:business',
+      });
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/menu/${id}`, config)
+        .then((res) => {
+          const {
+            name, category, price, options, spicy, vegetarian, description,
+          } = res.data.menu;
+          setFormData({
+            ...formData,
+            name,
+            category,
+            price,
+            options,
+            spicy,
+            vegetarian,
+            description,
+          });
+          setDataLoaded(true);
+        })
+        .catch(() => {
+          history.replace('/404');
+        });
+    }
+    if (!isNew) {
+      getMenu();
+    } else {
+      setDataLoaded(true);
+    }
   }, [getAccessTokenSilently]);
 
   const [formData, setFormData] = useState({
@@ -66,9 +111,15 @@ const Menu = () => {
       vegetarian,
       description,
     };
-    await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/menu`, body, config)
-      .then(() => history.push('/profile'))
-      .catch((err) => console.log(err.response.data));
+    if (!isNew) {
+      await axios.patch(`${process.env.REACT_APP_API_LOCAL}/api/menu/${id}`, body, config)
+        .then(() => history.push('/profile'))
+        .catch((err) => console.log(err.response.data));
+    } else {
+      await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/menu`, body, config)
+        .then(() => history.push('/profile'))
+        .catch((err) => console.log(err.response.data));
+    }
   };
 
   return (

@@ -8,7 +8,7 @@ const NewMenuPage = () => (
   <>
     <Navbar />
     <Container>
-      <MenuForm />
+      <MenuForm isNew />
     </Container>
     <Footer />
   </>

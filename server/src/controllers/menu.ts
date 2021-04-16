@@ -5,6 +5,18 @@ import isValidPrice from '../util/validators/menu';
 import { Business } from '../models/Business';
 import { Menu } from '../models/Menu';
 
+export const getMenu = async (req: Request, res: Response): Promise<Response> => {
+  const { id } = req.params;
+  if (!isValidObjectId(id)) {
+    return res.status(400).json({ message: [{ msg: 'That ID is not valid.', param: 'error' }] });
+  }
+  const menu = await Menu.findById(id);
+  if (!menu) {
+    return res.status(404).json({ message: [{ msg: 'The menu item you are looking for does not exist.', param: 'error' }] });
+  }
+  return res.status(200).json({ menu });
+};
+
 export const createMenu = async (req: Request, res: Response): Promise<Response> => {
   const user = req.user.sub;
   const {

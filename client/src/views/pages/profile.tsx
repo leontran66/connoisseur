@@ -18,6 +18,7 @@ const ProfilePage = () => {
     suburb: '',
     state: '',
     postCode: '',
+    menu: [],
   };
 
   return (

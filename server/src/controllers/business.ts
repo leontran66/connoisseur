@@ -18,7 +18,7 @@ export const getAllBusinesses = async (req: Request, res: Response): Promise<Res
 export const getOwnBusiness = async (req: Request, res: Response): Promise<Response> => {
   const user = req.user.sub;
   if (typeof user === 'string') {
-    const business = await Business.findOne({ user });
+    const business = await Business.findOne({ user }).populate('menu');
     if (!business) {
       return res.status(404).json({ message: [{ msg: 'The business you are looking for does not exist.', param: 'error' }] });
     }
@@ -32,7 +32,7 @@ export const getBusiness = async (req: Request, res: Response): Promise<Response
   if (!isValidObjectId(id)) {
     return res.status(400).json({ message: [{ msg: 'That ID is not valid.', param: 'error' }] });
   }
-  const business = await Business.findById(id);
+  const business = await Business.findById(id).populate('menu');
   if (!business) {
     return res.status(404).json({ message: [{ msg: 'The business you are looking for does not exist.', param: 'error' }] });
   }
