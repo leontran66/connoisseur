@@ -23,9 +23,9 @@ const Business = ({ children, business }: Props) => {
   return (
     <div className='tab-pane fade' id='business' role='tabpanel' aria-labelledby='business-tab'>
       { business.abn !== '' ? (
-        <>
-          <a href='/profile/edit' className='btn btn-dark mt-4 ms-3'>Edit Business Profile</a>
-          <table className='table table-borderless mt-3 ms-2 text-capitalize'>
+        <div className='mt-4 ms-2'>
+          <a href='/profile/edit' className='btn btn-dark ms-1'>Edit Business Profile</a>
+          <table className='table table-borderless mt-3 text-capitalize'>
             <tbody>
               <tr>
                 <th>Name:</th>
@@ -57,6 +57,8 @@ const Business = ({ children, business }: Props) => {
               </tr>
             </tbody>
           </table>
+          <a href='/menu/new' className='btn btn-dark'>Add New Menu Item</a>
+          {children}
           <div className='fixed-bottom card text-dark bg-light border-danger'>
             <div className='card-body p-2'>
               <div className='card-text'>
@@ -67,8 +69,7 @@ const Business = ({ children, business }: Props) => {
               </div>
             </div>
           </div>
-          {children}
-        </>
+        </div>
       ) : (
         <div className='mt-4 ms-2'>
           You current do not have a business profile.

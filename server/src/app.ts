@@ -36,7 +36,7 @@ app.get('/api/business/:id', scopes(['read:business']), business.getBusiness);
 app.post('/api/business', scopes(['write:business']), business.createBusiness);
 app.patch('/api/business', scopes(['write:business']), business.updateBusiness);
 app.delete('/api/business', scopes(['write:business']), business.deleteBusiness);
-app.post('/api/menu', menu.createMenu);
+app.post('/api/menu', scopes(['write:menu']), menu.createMenu);
 app.patch('/api/menu/:id', menu.updateMenu);
 app.delete('/api/menu/:id', menu.deleteMenu);
 app.post('/api/review', review.createReview);

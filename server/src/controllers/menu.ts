@@ -6,10 +6,10 @@ import { Business } from '../models/Business';
 import { Menu } from '../models/Menu';
 
 export const createMenu = async (req: Request, res: Response): Promise<Response> => {
+  const user = req.user.sub;
   const {
     name, category, options, description, spicy, vegetarian, price,
   } = req.body;
-  // const { id } = req.user;
 
   await body('name').notEmpty().trim().escape()
     .toLowerCase()
@@ -33,6 +33,11 @@ export const createMenu = async (req: Request, res: Response): Promise<Response>
     return res.status(400).json({ message: errors.array() });
   }
 
+  const business = await Business.findOne({ user });
+  if (!business) {
+    return res.status(400).json({ message: [{ msg: 'You do not have a business.', param: 'error' }] });
+  }
+
   const menu = new Menu({
     name,
     category,
@@ -45,9 +50,7 @@ export const createMenu = async (req: Request, res: Response): Promise<Response>
 
   await menu.save();
 
-  // find business from user id
-  // await Business.findByIdAndUpdate({ _id: id }, { $push: { menu: menu._id } });
-  await Business.findOneAndUpdate({ name: 'John Smith' }, { $push: { menu: menu._id } });
+  await Business.findOneAndUpdate({ user }, { $push: { menu: menu._id } });
 
   return res.status(200).json({ message: [{ msg: 'Menu item has been created.', param: 'success' }] });
 };

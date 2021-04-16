@@ -19,7 +19,7 @@ const App = () => (
     domain={process.env.REACT_APP_AUTH0_DOMAIN!}
     clientId={process.env.REACT_APP_AUTH0_CLIENT_ID!}
     redirectUri={window.location.origin}
-    scope='openid read:current_user update:current_user_metadata'
+    scope='openid read:current_user update:current_user_metadata read:business write:business read:menu write:menu read:reviews write:reviews'
   >
     <Router>
       <Switch>
