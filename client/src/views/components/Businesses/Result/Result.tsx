@@ -4,6 +4,7 @@ import './Result.css';
 
 type Props = {
   business: {
+    _id: string;
     name: string;
     phone: string;
     fax: string;
@@ -16,7 +17,7 @@ type Props = {
 
 const Result = ({
   business: {
-    name, phone, fax, streetAddress, suburb, state, postCode,
+    _id, name, phone, fax, streetAddress, suburb, state, postCode,
   },
 }: Props) => (
   <div className='result card'>
@@ -24,7 +25,7 @@ const Result = ({
       <img src={NoImage} className='card-img-top' alt='Teriyaki Tokyo' />
       <div className='card-text text-capitalize'>
         <h4 className='card-title'>
-          <a href='/restaurants/id' className='card-link'>{name}</a>
+          <a href={`/restaurants/${_id}`} className='card-link'>{name}</a>
           <span>
             5.0&nbsp;
             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#f5bd23' className='bi bi-star-fill' viewBox='0 0 16 16'>

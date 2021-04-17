@@ -5,7 +5,7 @@ const isValidPrice: CustomValidator = (value) => {
     return true;
   }
 
-  const price = value.replace(/[a-zA-Z ]/g, '');
+  const price = value.toString().replace(/[a-zA-Z ]/g, '');
   if (!Number.isNaN(parseFloat(price))) {
     return true;
   }

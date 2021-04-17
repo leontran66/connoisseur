@@ -19,6 +19,7 @@ const DeleteBusiness = () => {
       },
     };
     await axios.delete(`${process.env.REACT_APP_API_LOCAL}/api/business`, config);
+    history.push('/profile#business');
     history.go(0);
   };
 

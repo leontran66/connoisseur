@@ -18,6 +18,8 @@ const BusinessPage = () => {
     suburb: '',
     state: '',
     postCode: '',
+    menu: [],
+    reviews: [],
   };
 
   return (
@@ -26,8 +28,8 @@ const BusinessPage = () => {
       <Container>
         <Wrapper>
           <Heading business={businessDefault} />
-          <Tabs>
-            <Menu />
+          <Tabs business={businessDefault}>
+            <Menu business={businessDefault} />
             <Reviews>
               <ReviewForm />
             </Reviews>
