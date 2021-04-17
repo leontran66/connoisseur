@@ -3,6 +3,7 @@ import Business from '../components/Profile/Business';
 import DeleteBusinessForm from '../components/Forms/DeleteBusiness';
 import Container from '../components/common/Container';
 import Footer from '../components/common/Footer';
+import Menu from '../components/Profile/Menu';
 import Navbar from '../components/common/Navbar';
 import Profile from '../components/Profile/Profile';
 import Tabs from '../components/Profile/Tabs';
@@ -31,6 +32,7 @@ const ProfilePage = () => {
             <Business business={businessDefault}>
               <DeleteBusinessForm />
             </Business>
+            <Menu business={businessDefault} />
           </Tabs>
         </Wrapper>
       </Container>

@@ -68,6 +68,7 @@ export const createMenu = async (req: Request, res: Response): Promise<Response>
 };
 
 export const updateMenu = async (req: Request, res: Response): Promise<Response> => {
+  const user = req.user.sub;
   const {
     name, category, options, description, spicy, vegetarian, price,
   } = req.body;
@@ -104,7 +105,10 @@ export const updateMenu = async (req: Request, res: Response): Promise<Response>
     return res.status(404).json({ message: [{ msg: 'That menu item was not found.', field: 'error' }] });
   }
 
-  //  TODO: ensure that only the user who owns the item can update it
+  const business = await Business.findOne({ user });
+  if (!business) {
+    return res.status(400).json({ message: [{ msg: 'You do not have a business.', param: 'error' }] });
+  }
 
   await Menu.findByIdAndUpdate(id, {
     name,

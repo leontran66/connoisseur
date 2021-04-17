@@ -101,11 +101,11 @@ const Business = ({ isNew }: Props) => {
     };
     if (!isNew) {
       await axios.patch(`${process.env.REACT_APP_API_LOCAL}/api/business`, body, config)
-        .then(() => history.push('/profile'))
+        .then(() => history.push('/profile#business'))
         .catch((err) => console.log(err.response.data));
     } else {
       await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/business`, body, config)
-        .then(() => history.push('/profile'))
+        .then(() => history.push('/profile#business'))
         .catch((err) => console.log(err.response.data));
     }
   };

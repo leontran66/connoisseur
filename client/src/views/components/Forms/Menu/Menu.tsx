@@ -113,11 +113,11 @@ const Menu = ({ isNew }: Props) => {
     };
     if (!isNew) {
       await axios.patch(`${process.env.REACT_APP_API_LOCAL}/api/menu/${id}`, body, config)
-        .then(() => history.push('/profile'))
+        .then(() => history.push('/profile#menu'))
         .catch((err) => console.log(err.response.data));
     } else {
       await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/menu`, body, config)
-        .then(() => history.push('/profile'))
+        .then(() => history.push('/profile#menu'))
         .catch((err) => console.log(err.response.data));
     }
   };
