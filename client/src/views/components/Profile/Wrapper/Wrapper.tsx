@@ -4,8 +4,8 @@ import axios from 'axios';
 import Spinner from '../../common/Spinner/Spinner';
 
 type Props = {
-  children: React.ReactElement
-}
+  children: React.ReactElement;
+};
 
 const Wrapper = ({ children }: Props) => {
   const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();

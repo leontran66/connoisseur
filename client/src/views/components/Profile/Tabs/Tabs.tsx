@@ -11,8 +11,8 @@ type Props = {
     suburb: string;
     state: string;
     postCode: string;
-  }
-}
+  };
+};
 
 const Tabs = ({ children, business }: Props) => {
   const tab = window.location.href.split('#');
@@ -22,7 +22,7 @@ const Tabs = ({ children, business }: Props) => {
     <>
       <ul className='nav nav-tabs pt-3' id='userTab' role='tablist'>
         <li className='nav-item' role='presentation'>
-          <button className={`nav-link ${tab[1] === 'profile' || tab[1] === undefined ? 'active' : ''}`} id='profile-tab' data-bs-toggle='tab' data-bs-target='#profile' type='button' role='tab' aria-controls='profile' aria-selected='true'>Profile</button>
+          <button className={`nav-link ${(tab[1] === 'profile' || tab[1] === undefined) && 'active'}`} id='profile-tab' data-bs-toggle='tab' data-bs-target='#profile' type='button' role='tab' aria-controls='profile' aria-selected='true'>Profile</button>
         </li>
         <li className='nav-item' role='presentation'>
           <button className={`nav-link ${tab[1] === 'business' && 'active'}`} id='business-tab' data-bs-toggle='tab' data-bs-target='#business' type='button' role='tab' aria-controls='business' aria-selected='false'>Business</button>

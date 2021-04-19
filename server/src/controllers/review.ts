@@ -5,8 +5,7 @@ import { Business } from '../models/Business';
 import { Review } from '../models/Review';
 
 export const createReview = async (req: Request, res: Response): Promise<Response> => {
-  const { rating, comment } = req.body;
-  // const { id } = req.user;
+  const { id, rating, comment } = req.body;
 
   await body('rating').isNumeric().withMessage('Rating is required.')
     .run(req);
@@ -17,6 +16,8 @@ export const createReview = async (req: Request, res: Response): Promise<Respons
     return res.status(400).json({ message: errors.array() });
   }
 
+  // TODO: check if user has already created a review for business
+
   const review = new Review({
     rating,
     comment,
@@ -24,9 +25,7 @@ export const createReview = async (req: Request, res: Response): Promise<Respons
 
   await review.save();
 
-  // find business from user id
-  // await Business.findByIdAndUpdate({ _id: id }, { $push: { menu: menu._id } });
-  await Business.findOneAndUpdate({ name: 'John Smith' }, { $push: { reviews: review._id } });
+  await Business.findByIdAndUpdate({ _id: id }, { $push: { reviews: review._id } });
 
   return res.status(200).json({ message: [{ msg: 'Review has been created.', param: 'success' }] });
 };

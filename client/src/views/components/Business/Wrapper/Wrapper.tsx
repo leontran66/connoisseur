@@ -8,11 +8,11 @@ import Spinner from '../../common/Spinner/Spinner';
 
 type Props = {
   children: React.ReactElement[];
-}
+};
 
 type Params = {
   id: string;
-}
+};
 
 const Wrapper = ({ children }: Props) => {
   const { getAccessTokenSilently } = useAuth0();

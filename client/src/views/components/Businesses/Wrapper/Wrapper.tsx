@@ -7,8 +7,8 @@ import Result from '../Result';
 import Spinner from '../../common/Spinner/Spinner';
 
 type Props = {
-  children: React.ReactNode
-}
+  children: React.ReactElement;
+};
 
 type Business = {
   businesses: Array<{
@@ -23,7 +23,7 @@ type Business = {
     postCode: string;
   }>;
   pages: number;
-}
+};
 
 const Wrapper = ({ children }: Props) => {
   const { getAccessTokenSilently } = useAuth0();

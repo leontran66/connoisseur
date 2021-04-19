@@ -6,6 +6,7 @@ import './Menu.css';
 type Props = {
   business: {
     menu: Array<{
+      _id: string;
       name: string;
       category: string;
       price: number;
@@ -14,11 +15,10 @@ type Props = {
       vegetarian: boolean;
       description: string;
     }>;
-  }
-}
+  };
+};
 
 const Menu = ({ business: { menu } }: Props) => {
-  console.log(menu);
   const colOne = [];
   const colTwo = [];
   for (let i = 0; i < menu.length; i += 1) {
@@ -28,14 +28,15 @@ const Menu = ({ business: { menu } }: Props) => {
       colTwo.push(menu[i]);
     }
   }
+  const tab = window.location.href.split('#');
 
   return (
-    <div className='tab-pane fade show active' id='menu' role='tabpanel' aria-labelledby='menu-tab'>
+    <div className={`tab-pane fade ${(tab[1] === 'menu' || tab[1] === undefined) && 'show active'}`} id='menu' role='tabpanel' aria-labelledby='menu-tab'>
       <div className='row pb-3'>
         <div className='col-6'>
           {
             colOne.length > 0 && colOne.map((item) => (
-              <div className='card border-bottom'>
+              <div key={item._id} className='card border-bottom'>
                 <div className='card-body'>
                   <h5 className='card-title mb-1 text-capitalize'>
                     {item.name}
@@ -73,7 +74,7 @@ const Menu = ({ business: { menu } }: Props) => {
         <div className='col-6'>
           {
             colTwo.length > 0 && colTwo.map((item) => (
-              <div className='card border-bottom'>
+              <div key={item._id} className='card border-bottom'>
                 <div className='card-body'>
                   <h5 className='card-title mb-1 text-capitalize'>
                     {item.name}

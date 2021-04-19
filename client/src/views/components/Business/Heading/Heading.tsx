@@ -11,8 +11,8 @@ type Props = {
     suburb: string;
     state: string;
     postCode: string;
-  }
-}
+  };
+};
 
 const Heading = ({ business }: Props) => {
   const {

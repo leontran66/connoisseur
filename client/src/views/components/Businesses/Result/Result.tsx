@@ -12,8 +12,8 @@ type Props = {
     suburb: string;
     state: string;
     postCode: string;
-  }
-}
+  };
+};
 
 const Result = ({
   business: {

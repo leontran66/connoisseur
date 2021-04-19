@@ -7,7 +7,7 @@ import './Business.css';
 
 type Props = {
   isNew: boolean;
-}
+};
 
 const Business = ({ isNew }: Props) => {
   const { user, getAccessTokenSilently } = useAuth0();

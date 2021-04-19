@@ -30,7 +30,7 @@ const BusinessPage = () => {
           <Heading business={businessDefault} />
           <Tabs business={businessDefault}>
             <Menu business={businessDefault} />
-            <Reviews>
+            <Reviews business={businessDefault}>
               <ReviewForm />
             </Reviews>
           </Tabs>

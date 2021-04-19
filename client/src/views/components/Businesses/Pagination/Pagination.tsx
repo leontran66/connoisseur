@@ -4,7 +4,7 @@ import './Pagination.css';
 
 type Props = {
   pages: number;
-}
+};
 
 const Pagination = ({ pages }: Props) => {
   const query = new URLSearchParams(useLocation().search);

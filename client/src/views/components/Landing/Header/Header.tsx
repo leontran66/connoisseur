@@ -2,8 +2,8 @@ import React from 'react';
 import './Header.css';
 
 type Props = {
-  children: React.ReactNode
-}
+  children: React.ReactElement;
+};
 
 const Header = ({ children }: Props) => (
   <div className='header mx-auto text-center'>

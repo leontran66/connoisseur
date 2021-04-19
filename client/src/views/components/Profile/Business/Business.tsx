@@ -12,8 +12,8 @@ type Props = {
     suburb: string;
     state: string;
     postCode: string;
-  }
-}
+  };
+};
 
 const Business = ({ children, business }: Props) => {
   const tab = window.location.href.split('#');

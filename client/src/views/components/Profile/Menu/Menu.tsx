@@ -16,8 +16,8 @@ type Props = {
       vegetarian: boolean;
       description: string;
     }>
-  }
-}
+  };
+};
 
 const Business = ({ business }: Props) => {
   const tab = window.location.href.split('#');

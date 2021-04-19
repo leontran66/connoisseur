@@ -7,11 +7,11 @@ import './Menu.css';
 
 type Props = {
   isNew: boolean;
-}
+};
 
 type Params = {
   id: string;
-}
+};
 
 const Menu = ({ isNew }: Props) => {
   const { getAccessTokenSilently } = useAuth0();
