@@ -6,6 +6,7 @@ import {
 } from '../util/validators/business';
 import { Business } from '../models/Business';
 import { Menu } from '../models/Menu';
+import { Review } from '../models/Review';
 
 export const getAllBusinesses = async (req: Request, res: Response): Promise<Response> => {
   const businesses = await Business.find({});
@@ -175,7 +176,7 @@ export const deleteBusiness = async (req: Request, res: Response): Promise<Respo
   }
 
   await Menu.deleteMany({ _id: { $in: [business.menu] } });
-  // await Review.deleteMany(business.reviews);
+  await Review.deleteMany({ _id: { $in: [business.reviews] } });
   await Business.findOneAndDelete({ user });
 
   return res.status(200).json({ message: [{ msg: 'Your business has been deleted.', param: 'success' }] });

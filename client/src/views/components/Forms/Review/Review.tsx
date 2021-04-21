@@ -10,7 +10,7 @@ type Params = {
 };
 
 const Review = () => {
-  const { getAccessTokenSilently } = useAuth0();
+  const { user, getAccessTokenSilently } = useAuth0();
   const history = useHistory();
   const { id } = useParams<Params>();
   const ratings = [1, 2, 3, 4, 5];
@@ -39,6 +39,7 @@ const Review = () => {
     };
     const body = {
       id,
+      user: user.sub,
       rating,
       comment,
     };

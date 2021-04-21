@@ -1,4 +1,7 @@
 import React from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
 import './Reviews.css';
 
 type Props = {
@@ -6,13 +9,21 @@ type Props = {
   business: {
     reviews: Array<{
       _id: string;
+      user: string;
       rating: number;
       comment: string;
     }>
   };
 };
 
+type Params = {
+  id: string;
+};
+
 const Reviews = ({ children, business: { reviews } }: Props) => {
+  const { user, getAccessTokenSilently } = useAuth0();
+  const history = useHistory();
+  const { id } = useParams<Params>();
   const colOne = [];
   const colTwo = [];
   for (let i = 0; i < reviews.length; i += 1) {
@@ -24,9 +35,26 @@ const Reviews = ({ children, business: { reviews } }: Props) => {
   }
   const tab = window.location.href.split('#');
 
+  const onClick = async (reviewID: string) => {
+    const token = await getAccessTokenSilently({
+      audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+      scope: 'write:reviews',
+    });
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    await axios.delete(`${process.env.REACT_APP_API_LOCAL}/api/review/${reviewID}`, config)
+      .then(() => {
+        history.push(`/restaurants/${id}#reviews`);
+        history.go(0);
+      });
+  };
+
   return (
     <div className={`tab-pane fade ${tab[1] === 'reviews' && 'show active'}`} id='reviews' role='tabpanel' aria-labelledby='reviews-tab'>
-      {children}
+      {!reviews.some((review) => review.user === user.sub) && children}
       <div className='row pb-3 border-top'>
         {
           reviews.length > 0 ? (
@@ -46,6 +74,14 @@ const Reviews = ({ children, business: { reviews } }: Props) => {
                         <p className='card-text'>
                           {item.comment}
                         </p>
+                        {
+                          item.user === user.sub
+                          && (
+                          <p className='card-text'>
+                            <button type='button' className='btn btn-danger' onClick={() => onClick(item._id)}>Delete Review</button>
+                          </p>
+                          )
+                        }
                       </div>
                     </div>
                   ))
@@ -66,6 +102,14 @@ const Reviews = ({ children, business: { reviews } }: Props) => {
                         <p className='card-text'>
                           {item.comment}
                         </p>
+                        {
+                          item.user === user.sub
+                          && (
+                          <p className='card-text'>
+                            <button type='button' className='btn btn-danger' onClick={() => onClick(item._id)}>Delete Review</button>
+                          </p>
+                          )
+                        }
                       </div>
                     </div>
                   ))

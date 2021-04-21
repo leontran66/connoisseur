@@ -38,11 +38,10 @@ app.patch('/api/business', scopes(['write:business']), business.updateBusiness);
 app.delete('/api/business', scopes(['write:business']), business.deleteBusiness);
 app.get('/api/menu/:id', scopes(['read:menu']), menu.getMenu);
 app.post('/api/menu', scopes(['write:menu']), menu.createMenu);
-app.patch('/api/menu/:id', menu.updateMenu);
-app.delete('/api/menu/:id', menu.deleteMenu);
-app.post('/api/review', review.createReview);
-app.patch('/api/review/:id', review.updateReview);
-app.delete('/api/review/:id', review.deleteReview);
+app.patch('/api/menu/:id', scopes(['write:menu']), menu.updateMenu);
+app.delete('/api/menu/:id', scopes(['write:menu']),  menu.deleteMenu);
+app.post('/api/review', scopes(['write:reviews']), review.createReview);
+app.delete('/api/review/:id', scopes(['write:reviews']), review.deleteReview);
 
 app.use(errorHandler);
 

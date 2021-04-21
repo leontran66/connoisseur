@@ -138,10 +138,7 @@ export const deleteMenu = async (req: Request, res: Response): Promise<Response>
   // TODO: ensure that only the user who owns the item can delete it
 
   await Menu.findByIdAndDelete(id);
-
-  // find business from user id
-  // await Business.findByIdAndUpdate(id, { $pull: { menu: { $eq: id } } });
-  await Business.findOneAndUpdate({ name: 'John Smith' }, { $pull: { menu: { $in: id } } });
+  await Business.findOneAndUpdate({ menu: { $elemMatch: { $eq: id } } }, { $pull: { menu: { $in: [id] } } });
 
   return res.status(200).json({ message: [{ msg: 'Menu item has been deleted.', param: 'success' }] });
 };
