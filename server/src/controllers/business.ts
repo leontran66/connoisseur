@@ -9,7 +9,7 @@ import { Menu } from '../models/Menu';
 import { Review } from '../models/Review';
 
 export const getAllBusinesses = async (req: Request, res: Response): Promise<Response> => {
-  const businesses = await Business.find({});
+  const businesses = await Business.find({}).populate('reviews');
   if (businesses.length <= 0) {
     return res.status(404).json({ message: [{ msg: 'Businesses not found.', param: 'error' }] });
   }

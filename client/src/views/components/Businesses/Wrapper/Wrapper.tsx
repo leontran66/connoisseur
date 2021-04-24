@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, useLocation } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import Pagination from '../Pagination';
 import Result from '../Result';
@@ -21,12 +20,14 @@ type Business = {
     suburb: string;
     state: string;
     postCode: string;
+    reviews: Array<{
+      rating: number;
+    }>;
   }>;
   pages: number;
 };
 
 const Wrapper = ({ children }: Props) => {
-  const { getAccessTokenSilently } = useAuth0();
   const [dataLoaded, setDataLoaded] = useState(false);
   const query = new URLSearchParams(useLocation().search);
   const search = query.get('search_query');
@@ -41,18 +42,7 @@ const Wrapper = ({ children }: Props) => {
 
   useEffect(() => {
     const getBusiness = async () => {
-      const token = await getAccessTokenSilently({
-        audience: `${process.env.REACT_APP_AUTH0_AUDIENCE}`,
-        scope: 'read:business',
-      });
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/business`, config)
+      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/business`)
         .then((res) => {
           const { businesses } = res.data;
           setBusinessData({
@@ -68,7 +58,7 @@ const Wrapper = ({ children }: Props) => {
     };
 
     getBusiness();
-  }, [getAccessTokenSilently]);
+  }, []);
 
   const [businessData, setBusinessData] = useState<Business>({
     businesses: [],

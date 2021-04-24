@@ -26,22 +26,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet(helmetOptions));
 app.use(morgan);
 
-if (NODE_ENV !== 'test') {
-  app.use(checkJwt);
-}
-
 app.get('/api/business', business.getAllBusinesses);
-app.get('/api/business/me', scopes(['read:business']), business.getOwnBusiness);
-app.get('/api/business/:id', scopes(['read:business']), business.getBusiness);
-app.post('/api/business', scopes(['write:business']), business.createBusiness);
-app.patch('/api/business', scopes(['write:business']), business.updateBusiness);
-app.delete('/api/business', scopes(['write:business']), business.deleteBusiness);
-app.get('/api/menu/:id', scopes(['read:menu']), menu.getMenu);
-app.post('/api/menu', scopes(['write:menu']), menu.createMenu);
-app.patch('/api/menu/:id', scopes(['write:menu']), menu.updateMenu);
-app.delete('/api/menu/:id', scopes(['write:menu']),  menu.deleteMenu);
-app.post('/api/review', scopes(['write:reviews']), review.createReview);
-app.delete('/api/review/:id', scopes(['write:reviews']), review.deleteReview);
+app.get('/api/business/me', checkJwt, scopes(['read:business']), business.getOwnBusiness);
+app.get('/api/business/:id', business.getBusiness);
+app.post('/api/business', checkJwt, scopes(['write:business']), business.createBusiness);
+app.patch('/api/business', checkJwt, scopes(['write:business']), business.updateBusiness);
+app.delete('/api/business', checkJwt, scopes(['write:business']), business.deleteBusiness);
+app.get('/api/menu/:id', checkJwt, scopes(['read:menu']), menu.getMenu);
+app.post('/api/menu', checkJwt, scopes(['write:menu']), menu.createMenu);
+app.patch('/api/menu/:id', checkJwt, scopes(['write:menu']), menu.updateMenu);
+app.delete('/api/menu/:id', checkJwt, scopes(['write:menu']),  menu.deleteMenu);
+app.post('/api/review', checkJwt, scopes(['write:reviews']), review.createReview);
+app.delete('/api/review/:id', checkJwt, scopes(['write:reviews']), review.deleteReview);
 
 app.use(errorHandler);
 
