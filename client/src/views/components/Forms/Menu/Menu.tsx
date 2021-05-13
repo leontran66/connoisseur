@@ -163,8 +163,8 @@ const Menu = ({ isNew }: Props) => {
                 <label htmlFor='description' className='form-label'>Description</label>
                 <textarea className='form-control' id='description' name='description' rows={3} value={description} onChange={(e) => onChange(e)} />
               </div>
-              <button type='submit' className='btn btn-dark' onClick={(e) => onSubmit(e)}>Submit</button>
-              <a href='#!' className='btn btn-dark me-2' onClick={() => goBack()}>Cancel</a>
+              <button type='submit' className='btn btn-dark me-2' onClick={(e) => onSubmit(e)}>Submit</button>
+              <a href='#!' className='btn btn-dark' onClick={() => goBack()}>Cancel</a>
             </form>
           </div>
         ) : (

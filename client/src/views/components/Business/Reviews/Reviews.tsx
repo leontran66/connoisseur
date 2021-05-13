@@ -103,7 +103,7 @@ const Reviews = ({ children, business: { reviews } }: Props) => {
                           {item.comment}
                         </p>
                         {
-                          item.user === user.sub
+                          isAuthenticated && item.user === user.sub
                           && (
                           <p className='card-text'>
                             <button type='button' className='btn btn-danger' onClick={() => onClick(item._id)}>Delete Review</button>
