@@ -47,13 +47,24 @@ const Business = ({ children, business }: Props) => {
               <tr>
                 <th>Address:</th>
                 <td>
-                  {streetAddress}
-                  <br />
-                  {suburb}
-                  ,&nbsp;
-                  {state}
-                  ,&nbsp;
-                  {postCode}
+                  {
+                    streetAddress
+                      ? (
+                        <>
+                          {streetAddress}
+                          <br />
+                          {suburb}
+                          ,&nbsp;
+                          {state}
+                          ,&nbsp;
+                          {postCode}
+                        </>
+                      ) : (
+                        <>
+                          N/A
+                        </>
+                      )
+                  }
                 </td>
               </tr>
             </tbody>

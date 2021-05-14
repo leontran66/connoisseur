@@ -55,13 +55,24 @@ const Result = ({
           <p className='mb-1'>
             <b>Address:&nbsp;</b>
             <br />
-            {streetAddress}
-            <br />
-            {suburb}
-            ,&nbsp;
-            {state}
-            ,&nbsp;
-            {postCode}
+            {
+              streetAddress
+                ? (
+                  <>
+                    {streetAddress}
+                    <br />
+                    {suburb}
+                    ,&nbsp;
+                    {state}
+                    ,&nbsp;
+                    {postCode}
+                  </>
+                ) : (
+                  <>
+                    N/A
+                  </>
+                )
+            }
           </p>
           <p className='mb-1'>
             <b>Phone:&nbsp;</b>
