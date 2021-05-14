@@ -13,6 +13,7 @@ import errorHandler from './util/errorHandler';
 import * as business from './controllers/business';
 import * as menu from './controllers/menu';
 import * as review from './controllers/review';
+import * as user from './controllers/user';
 
 require('dotenv').config();
 
@@ -38,6 +39,7 @@ app.patch('/api/menu/:id', checkJwt, scopes(['write:menu']), menu.updateMenu);
 app.delete('/api/menu/:id', checkJwt, scopes(['write:menu']),  menu.deleteMenu);
 app.post('/api/review', checkJwt, scopes(['write:reviews']), review.createReview);
 app.delete('/api/review/:id', checkJwt, scopes(['write:reviews']), review.deleteReview);
+app.post('/api/user', user.setUserRole);
 
 app.use(errorHandler);
 
