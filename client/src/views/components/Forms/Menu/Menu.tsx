@@ -13,10 +13,20 @@ type Params = {
   id: string;
 };
 
+type Error = {
+  msg: string;
+  param: string;
+}
+
 const Menu = ({ isNew }: Props) => {
   const { getAccessTokenSilently } = useAuth0();
   const history = useHistory();
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [errors, setErrors] = useState({
+    name: '',
+    category: '',
+    price: '',
+  });
   let id = '';
   if (!isNew) {
     id = useParams<Params>().id;
@@ -81,6 +91,9 @@ const Menu = ({ isNew }: Props) => {
 
   const onChange = (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.currentTarget.name]: e.currentTarget.value });
+    if (e.currentTarget.name === 'name' || e.currentTarget.name === 'category' || e.currentTarget.name === 'price') {
+      setErrors({ ...errors, [e.currentTarget.name]: '' });
+    }
   };
 
   const onCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,11 +127,45 @@ const Menu = ({ isNew }: Props) => {
     if (!isNew) {
       await axios.patch(`${process.env.REACT_APP_API_LOCAL}/api/menu/${id}`, body, config)
         .then(() => history.push('/profile#menu'))
-        .catch((err) => console.log(err.response.data));
+        .catch((err) => {
+          const newErrors = {
+            [name]: '',
+            [category]: '',
+            [price]: '',
+          };
+          const { message } = err.response.data;
+          message.forEach((error: Error) => {
+            const { param } = error;
+            newErrors[param] = error.msg;
+          });
+          setErrors({
+            ...errors,
+            name: newErrors.name,
+            category: newErrors.category,
+            price: newErrors.price,
+          });
+        });
     } else {
       await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/menu`, body, config)
         .then(() => history.push('/profile#menu'))
-        .catch((err) => console.log(err.response.data));
+        .catch((err) => {
+          const newErrors = {
+            [name]: '',
+            [category]: '',
+            [price]: '',
+          };
+          const { message } = err.response.data;
+          message.forEach((error: Error) => {
+            const { param } = error;
+            newErrors[param] = error.msg;
+          });
+          setErrors({
+            ...errors,
+            name: newErrors.name,
+            category: newErrors.category,
+            price: newErrors.price,
+          });
+        });
     }
   };
 
@@ -132,16 +179,25 @@ const Menu = ({ isNew }: Props) => {
             <form>
               <div className='mb-3'>
                 <label htmlFor='name' className='form-label'>Name</label>
-                <input type='text' className='form-control' id='name' name='name' value={name} onChange={(e) => onChange(e)} />
+                <input type='text' className={`form-control ${errors.name && 'is-invalid'}`} id='name' name='name' value={name} onChange={(e) => onChange(e)} />
+                <div className='invalid-feedback'>
+                  {errors.name}
+                </div>
               </div>
               <div className='mb-3 row'>
                 <div className='col-6'>
                   <label htmlFor='category' className='form-label'>Category</label>
-                  <input type='text' className='form-control' id='category' name='category' value={category} onChange={(e) => onChange(e)} />
+                  <input type='text' className={`form-control ${errors.category && 'is-invalid'}`} id='category' name='category' value={category} onChange={(e) => onChange(e)} />
+                  <div className='invalid-feedback'>
+                    {errors.category}
+                  </div>
                 </div>
                 <div className='col-6'>
                   <label htmlFor='price' className='form-label'>Price</label>
-                  <input type='text' className='form-control' id='price' name='price' value={price} onChange={(e) => onChange(e)} />
+                  <input type='text' className={`form-control ${errors.price && 'is-invalid'}`} id='price' name='price' value={price} onChange={(e) => onChange(e)} />
+                  <div className='invalid-feedback'>
+                    {errors.price}
+                  </div>
                 </div>
               </div>
               <div className='mb-3'>
