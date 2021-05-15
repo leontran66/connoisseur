@@ -4,6 +4,7 @@ import { isValidObjectId } from 'mongoose';
 import isValidPrice from '../util/validators/menu';
 import { Business } from '../models/Business';
 import { Menu } from '../models/Menu';
+import { NODE_ENV } from '../config/secrets';
 
 export const getMenu = async (req: Request, res: Response): Promise<Response> => {
   const { id } = req.params;
@@ -18,7 +19,14 @@ export const getMenu = async (req: Request, res: Response): Promise<Response> =>
 };
 
 export const createMenu = async (req: Request, res: Response): Promise<Response> => {
-  const user = req.user.sub;
+  let user: string;
+
+  if (NODE_ENV === 'production') {
+    user = req.user.sub;
+  } else {
+    user = req.body.user;
+  }
+
   const {
     name, category, options, description, spicy, vegetarian, price,
   } = req.body;
@@ -68,7 +76,14 @@ export const createMenu = async (req: Request, res: Response): Promise<Response>
 };
 
 export const updateMenu = async (req: Request, res: Response): Promise<Response> => {
-  const user = req.user.sub;
+  let user: string;
+
+  if (NODE_ENV === 'production') {
+    user = req.user.sub;
+  } else {
+    user = req.body.user;
+  }
+
   const {
     name, category, options, description, spicy, vegetarian, price,
   } = req.body;
@@ -109,6 +124,9 @@ export const updateMenu = async (req: Request, res: Response): Promise<Response>
   if (!business) {
     return res.status(400).json({ message: [{ msg: 'You do not have a business.', param: 'error' }] });
   }
+  if (!business.menu.some((item) => item.toString() === id)) {
+    return res.status(401).json({ message: [{ msg: 'You are not authorized to update a menu item on this business.', param: 'error' }] });
+  }
 
   await Menu.findByIdAndUpdate(id, {
     name,
@@ -124,6 +142,14 @@ export const updateMenu = async (req: Request, res: Response): Promise<Response>
 };
 
 export const deleteMenu = async (req: Request, res: Response): Promise<Response> => {
+  let user: string;
+
+  if (NODE_ENV === 'production') {
+    user = req.user.sub;
+  } else {
+    user = req.body.user;
+  }
+
   const { id } = req.params;
 
   if (!isValidObjectId(id)) {
@@ -135,7 +161,13 @@ export const deleteMenu = async (req: Request, res: Response): Promise<Response>
     return res.status(404).json({ message: [{ msg: 'That menu item was not found.', field: 'error' }] });
   }
 
-  // TODO: ensure that only the user who owns the item can delete it
+  const business = await Business.findOne({ user });
+  if (!business) {
+    return res.status(400).json({ message: [{ msg: 'You do not have a business.', param: 'error' }] });
+  }
+  if (!business.menu.some((item) => item.toString() === id)) {
+    return res.status(401).json({ message: [{ msg: 'You are not authorized to delete a menu item on this business.', param: 'error' }] });
+  }
 
   await Menu.findByIdAndDelete(id);
   await Business.findOneAndUpdate({ menu: { $elemMatch: { $eq: id } } }, { $pull: { menu: { $in: [id] } } });

@@ -27,18 +27,31 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet(helmetOptions));
 app.use(morgan);
 
+if (NODE_ENV === 'production') {
+  app.get('/api/business/me', checkJwt, scopes(['read:business']), business.getOwnBusiness);
+  app.post('/api/business', checkJwt, scopes(['write:business']), business.createBusiness);
+  app.patch('/api/business', checkJwt, scopes(['write:business']), business.updateBusiness);
+  app.delete('/api/business', checkJwt, scopes(['write:business']), business.deleteBusiness);
+  app.get('/api/menu/:id', checkJwt, scopes(['read:menu']), menu.getMenu);
+  app.post('/api/menu', checkJwt, scopes(['write:menu']), menu.createMenu);
+  app.patch('/api/menu/:id', checkJwt, scopes(['write:menu']), menu.updateMenu);
+  app.delete('/api/menu/:id', checkJwt, scopes(['write:menu']), menu.deleteMenu);
+  app.post('/api/review', checkJwt, scopes(['write:reviews']), review.createReview);
+  app.delete('/api/review/:id', checkJwt, scopes(['write:reviews']), review.deleteReview);
+} else {
+  app.get('/api/business/me', business.getOwnBusiness);
+  app.post('/api/business', business.createBusiness);
+  app.patch('/api/business', business.updateBusiness);
+  app.delete('/api/business', business.deleteBusiness);
+  app.get('/api/menu/:id', menu.getMenu);
+  app.post('/api/menu', menu.createMenu);
+  app.patch('/api/menu/:id', menu.updateMenu);
+  app.delete('/api/menu/:id', menu.deleteMenu);
+  app.post('/api/review', review.createReview);
+  app.delete('/api/review/:id', review.deleteReview);
+}
 app.get('/api/business', business.getAllBusinesses);
-app.get('/api/business/me', checkJwt, scopes(['read:business']), business.getOwnBusiness);
 app.get('/api/business/:id', business.getBusiness);
-app.post('/api/business', checkJwt, scopes(['write:business']), business.createBusiness);
-app.patch('/api/business', checkJwt, scopes(['write:business']), business.updateBusiness);
-app.delete('/api/business', checkJwt, scopes(['write:business']), business.deleteBusiness);
-app.get('/api/menu/:id', checkJwt, scopes(['read:menu']), menu.getMenu);
-app.post('/api/menu', checkJwt, scopes(['write:menu']), menu.createMenu);
-app.patch('/api/menu/:id', checkJwt, scopes(['write:menu']), menu.updateMenu);
-app.delete('/api/menu/:id', checkJwt, scopes(['write:menu']),  menu.deleteMenu);
-app.post('/api/review', checkJwt, scopes(['write:reviews']), review.createReview);
-app.delete('/api/review/:id', checkJwt, scopes(['write:reviews']), review.deleteReview);
 app.post('/api/user', user.setUserRole);
 
 app.use(errorHandler);

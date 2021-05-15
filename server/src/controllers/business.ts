@@ -7,6 +7,7 @@ import {
 import { Business } from '../models/Business';
 import { Menu } from '../models/Menu';
 import { Review } from '../models/Review';
+import { NODE_ENV } from '../config/secrets';
 
 export const getAllBusinesses = async (req: Request, res: Response): Promise<Response> => {
   const businesses = await Business.find({}).populate('reviews');
@@ -17,7 +18,14 @@ export const getAllBusinesses = async (req: Request, res: Response): Promise<Res
 };
 
 export const getOwnBusiness = async (req: Request, res: Response): Promise<Response> => {
-  const user = req.user.sub;
+  let user: string;
+
+  if (NODE_ENV === 'production') {
+    user = req.user.sub;
+  } else {
+    user = req.body.user;
+  }
+
   if (typeof user === 'string') {
     const business = await Business.findOne({ user }).populate('menu').populate('reviews');
     if (!business) {
@@ -78,7 +86,8 @@ export const createBusiness = async (req: Request, res: Response): Promise<Respo
     return res.status(400).json({ message: address });
   }
 
-  const businessExists = await Business.findOne({ abn });
+  const searchABN = abn.replace(/ /g, '');
+  const businessExists = await Business.findOne({ abn: `${searchABN.slice(0, 2)} ${searchABN.slice(2, 5)} ${searchABN.slice(5, 8)} ${searchABN.slice(8, 11)}` });
   if (businessExists) {
     return res.status(400).json({ message: [{ msg: 'A business with that ABN already exists.', param: 'abn' }] });
   }
@@ -101,7 +110,14 @@ export const createBusiness = async (req: Request, res: Response): Promise<Respo
 };
 
 export const updateBusiness = async (req: Request, res: Response): Promise<Response> => {
-  const user = req.user.sub;
+  let user: string;
+
+  if (NODE_ENV === 'production') {
+    user = req.user.sub;
+  } else {
+    user = req.body.user;
+  }
+
   const {
     name, abn, phone, fax, streetAddress, suburb, state, postCode,
   } = req.body;
@@ -143,9 +159,6 @@ export const updateBusiness = async (req: Request, res: Response): Promise<Respo
   if (!business) {
     return res.status(404).json({ message: [{ msg: 'Your business was not found.', param: 'error' }] });
   }
-  if (user !== business.user) {
-    return res.status(401).json({ message: [{ msg: 'You are unauthorized to make changes to that business.', param: 'error' }] });
-  }
   if (business && business.abn !== abn) {
     return res.status(400).json({ message: [{ msg: 'ABN cannot be altered.', param: 'abn' }] });
   }
@@ -165,14 +178,17 @@ export const updateBusiness = async (req: Request, res: Response): Promise<Respo
 };
 
 export const deleteBusiness = async (req: Request, res: Response): Promise<Response> => {
-  const user = req.user.sub;
+  let user: string;
+
+  if (NODE_ENV === 'production') {
+    user = req.user.sub;
+  } else {
+    user = req.body.user;
+  }
 
   const business = await Business.findOne({ user });
   if (!business) {
     return res.status(404).json({ message: [{ msg: 'Your business was not found.', param: 'error' }] });
-  }
-  if (user !== business.user) {
-    return res.status(401).json({ message: [{ msg: 'You are unauthorized to make changes to that business.', param: 'error' }] });
   }
 
   await Menu.deleteMany({ _id: { $in: [business.menu] } });

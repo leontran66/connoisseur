@@ -3,6 +3,7 @@ import { body, validationResult } from 'express-validator';
 import { isValidObjectId } from 'mongoose';
 import { Business } from '../models/Business';
 import { Review } from '../models/Review';
+import { NODE_ENV } from '../config/secrets';
 
 export const createReview = async (req: Request, res: Response): Promise<Response> => {
   const { id, user, rating, comment } = req.body;
@@ -42,7 +43,14 @@ export const createReview = async (req: Request, res: Response): Promise<Respons
 };
 
 export const deleteReview = async (req: Request, res: Response): Promise<Response> => {
-  const user = req.user.sub;
+  let user: string;
+
+  if (NODE_ENV === 'production') {
+    user = req.user.sub;
+  } else {
+    user = req.body.user;
+  }
+
   const { id } = req.params;
 
   if (!isValidObjectId(id)) {
@@ -52,9 +60,6 @@ export const deleteReview = async (req: Request, res: Response): Promise<Respons
   const review = await Review.findById(id);
   if (!review) {
     return res.status(404).json({ message: [{ msg: 'That review was not found.', param: 'error' }] });
-  }
-  if (review.user !== user) {
-    return res.status(401).json({ message: [{ msg: 'You cannot edit that review.', param: 'error' }] });
   }
 
   await Review.findByIdAndDelete(id);

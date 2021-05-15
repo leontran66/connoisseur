@@ -16,7 +16,6 @@ const Header = ({ children }: Props) => {
         const data = {
           url: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${user.sub}/roles`,
         };
-        console.log('test2');
 
         await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/user`, data);
       }
