@@ -40,7 +40,7 @@ const Restaurants = () => {
   });
 
   const { businesses } = businessData;
-  if (businesses.length > 0) {
+  if (businesses && businesses.length > 0) {
     businesses.sort((a, b) => {
       let firstRating = 0;
       let secondRating = 0;
@@ -64,7 +64,7 @@ const Restaurants = () => {
     <div className='restaurants' id='restaurants'>
       <div className='row gx-0'>
         {
-          businesses.length > 0 && businesses.slice(0, 3).map((business) => {
+          businesses && businesses.length > 0 && businesses.slice(0, 3).map((business) => {
             let rating = 0;
             if (business.reviews.length > 0) {
               business.reviews.forEach((review) => {
@@ -97,13 +97,24 @@ const Restaurants = () => {
                     <p className='mb-1'>
                       <b>Address</b>
                       <br />
-                      {business.streetAddress}
-                      <br />
-                      {business.suburb}
-                      ,&nbsp;
-                      {business.state}
-                      ,&nbsp;
-                      {business.postCode}
+                      {
+                        business.streetAddress
+                          ? (
+                            <>
+                              {business.streetAddress}
+                              <br />
+                              {business.suburb}
+                              ,&nbsp;
+                              {business.state}
+                              ,&nbsp;
+                              {business.postCode}
+                            </>
+                          ) : (
+                            <>
+                              N/A
+                            </>
+                          )
+                      }
                     </p>
                     <p className='mb-1'>
                       <b>Phone</b>

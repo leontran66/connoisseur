@@ -39,7 +39,7 @@ const Review = () => {
     };
     const body = {
       id,
-      user: user.sub,
+      user: user && user.sub,
       rating,
       comment,
     };

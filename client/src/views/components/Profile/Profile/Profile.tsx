@@ -12,11 +12,11 @@ const Profile = () => {
         <tbody>
           <tr>
             <th>Name:</th>
-            <td>{user.name}</td>
+            <td>{user && user.name}</td>
           </tr>
           <tr>
             <th>Email:</th>
-            <td>{user.email}</td>
+            <td>{user && user.email}</td>
           </tr>
         </tbody>
       </table>

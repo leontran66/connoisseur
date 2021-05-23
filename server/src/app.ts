@@ -1,4 +1,3 @@
-/// <reference path="./types/request.d.ts" />
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
@@ -13,7 +12,7 @@ import errorHandler from './util/errorHandler';
 import * as business from './controllers/business';
 import * as menu from './controllers/menu';
 import * as review from './controllers/review';
-import * as user from './controllers/user';
+import setUserRole from './controllers/user';
 
 require('dotenv').config();
 
@@ -52,7 +51,7 @@ if (NODE_ENV === 'production') {
 }
 app.get('/api/business', business.getAllBusinesses);
 app.get('/api/business/:id', business.getBusiness);
-app.post('/api/user', user.setUserRole);
+app.post('/api/user', setUserRole);
 
 app.use(errorHandler);
 

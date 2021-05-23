@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
-import { AUTH0_MGMT_CLIENT_ID, AUTH0_MGMT_CLIENT_SECRET, AUTH0_DOMAIN, AUTH0_USER_ROLE } from '../config/secrets';
+import {
+  AUTH0_MGMT_CLIENT_ID, AUTH0_MGMT_CLIENT_SECRET, AUTH0_DOMAIN, AUTH0_USER_ROLE,
+} from '../config/secrets';
 
-export const setUserRole = async (req: Request, res: Response): Promise<Response> => {
+export default async (req: Request, res: Response): Promise<Response> => {
   const { url } = req.body;
 
   const response = await axios.post(
@@ -18,11 +20,11 @@ export const setUserRole = async (req: Request, res: Response): Promise<Response
         'content-type': 'application/json',
       },
     },
-  )
+  );
 
   const data = {
-    roles: [AUTH0_USER_ROLE]
-  }
+    roles: [AUTH0_USER_ROLE],
+  };
 
   const config = {
     headers: {
@@ -33,6 +35,6 @@ export const setUserRole = async (req: Request, res: Response): Promise<Response
   };
 
   await axios.post(url, data, config);
-  
+
   return res.status(200).json({ message: [{ msg: 'User role assigned.', param: 'success' }] });
 };

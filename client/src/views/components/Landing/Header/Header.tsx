@@ -12,7 +12,7 @@ const Header = ({ children }: Props) => {
 
   useEffect(() => {
     const setUserRole = async () => {
-      if (isAuthenticated && !user[`${process.env.REACT_APP_AUTH0_AUDIENCE}/roles`].includes('user')) {
+      if (isAuthenticated && user && !user[`${process.env.REACT_APP_AUTH0_AUDIENCE}/roles`].includes('user')) {
         const data = {
           url: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${user.sub}/roles`,
         };

@@ -1,0 +1,24 @@
+FROM node:lts-alpine AS INSTALL_MODULES
+RUN apk update --no-cache
+RUN apk add --no-cache python g++ make
+WORKDIR /app
+COPY ["package.json", "package-lock.json", "./"]
+RUN npm i npm@latest
+RUN npm i
+
+FROM node:lts-alpine AS BUILD_IMAGE
+WORKDIR /app
+COPY --from=INSTALL_MODULES /app/node_modules ./node_modules
+COPY . .
+RUN npm i npm@latest
+RUN npm run build
+RUN npm prune --production
+
+FROM node:lts-alpine
+WORKDIR /app
+COPY ["package.json", "package-lock.json", "./"]
+COPY [".env", "./"]
+COPY --from=BUILD_IMAGE /app/dist ./dist
+COPY --from=BUILD_IMAGE /app/node_modules ./node_modules
+ENV NODE_ENV production
+CMD ["npm", "run", "production"]

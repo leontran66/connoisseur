@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "npm run watch-serve",
+    "production": "node dist/src/server.js",
     "serve": "ts-node dist/src/server.js",
     "test": "jest --coverage --runInBand",
     "watch-serve": "npx nodemon src/server.ts"

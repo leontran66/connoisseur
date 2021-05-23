@@ -170,7 +170,8 @@ export const deleteMenu = async (req: Request, res: Response): Promise<Response>
   }
 
   await Menu.findByIdAndDelete(id);
-  await Business.findOneAndUpdate({ menu: { $elemMatch: { $eq: id } } }, { $pull: { menu: { $in: [id] } } });
+  await Business.findOneAndUpdate({ menu: { $elemMatch: { $eq: id } } },
+    { $pull: { menu: { $in: [id] } } });
 
   return res.status(200).json({ message: [{ msg: 'Menu item has been deleted.', param: 'success' }] });
 };

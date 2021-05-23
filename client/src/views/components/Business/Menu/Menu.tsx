@@ -64,7 +64,7 @@ const Menu = ({ business: { menu } }: Props) => {
                   <p className='card-text'>
                     <span className='text-capitalize'>{item.options}</span>
                     <br />
-                    {item.description}
+                    <em>{item.description}</em>
                   </p>
                 </div>
               </div>
@@ -102,7 +102,7 @@ const Menu = ({ business: { menu } }: Props) => {
                   <p className='card-text'>
                     <span className='text-capitalize'>{item.options}</span>
                     <br />
-                    {item.description}
+                    <em>{item.description}</em>
                   </p>
                 </div>
               </div>

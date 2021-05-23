@@ -11,7 +11,7 @@ export const { AUTH0_DOMAIN } = process.env;
 export const { AUTH0_MGMT_CLIENT_ID } = process.env;
 export const { AUTH0_MGMT_CLIENT_SECRET } = process.env;
 export const { AUTH0_USER_ROLE } = process.env;
-export const MONGODB_URI = isProduction ? process.env : process.env.MONGODB_URI_LOCAL;
+export const MONGODB_URI = isProduction ? process.env.MONGODB_URI : process.env.MONGODB_URI_LOCAL;
 
 if (!AUTH0_AUDIENCE) {
   logger.error('No Auth0 audience. Set AUTH0_AUDIENCE environment variable.');

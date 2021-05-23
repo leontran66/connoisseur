@@ -108,11 +108,11 @@ describe('business route', () => {
       expect(res.body.business.abn).toBe('51 824 753 556');
     });
   });
- 
+
   describe('POST /api/business route', () => {
     test('all invalid inputs should return 400 Bad Request', async () => {
       expect.assertions(7);
-      const res = await request(app).post(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user: 'test',
           name: '',
@@ -135,7 +135,7 @@ describe('business route', () => {
 
     test('invalid ABN should return 400 Bad Request', async () => {
       expect.assertions(2);
-      const res = await request(app).post(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user: 'test',
           name: 'John Doe',
@@ -147,7 +147,7 @@ describe('business route', () => {
 
     test('partial address should return 400 Bad Request', async () => {
       expect.assertions(4);
-      const res = await request(app).post(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user: 'test',
           name: 'John Doe',
@@ -165,7 +165,7 @@ describe('business route', () => {
 
     test('already existing abn should return 400 Bad Request', async () => {
       expect.assertions(2);
-      const res = await request(app).post(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user: process.env.AUTH0_USER_ID,
           name: 'John Doe',
@@ -183,7 +183,7 @@ describe('business route', () => {
 
     test('correct input should return 200 OK', async () => {
       expect.assertions(8);
-      const res = await request(app).post(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user: 'test',
           name: 'Leon Tran',
@@ -217,7 +217,7 @@ describe('business route', () => {
 
     test('all invalid inputs should return 400 Bad Request', async () => {
       expect.assertions(7);
-      const res = await request(app).patch(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user,
           name: '',
@@ -240,7 +240,7 @@ describe('business route', () => {
 
     test('invalid ABN should return 400 Bad Request', async () => {
       expect.assertions(2);
-      const res = await request(app).patch(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user,
           name: 'John Doe',
@@ -252,7 +252,7 @@ describe('business route', () => {
 
     test('partial address should return 400 Bad Request', async () => {
       expect.assertions(4);
-      const res = await request(app).patch(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user,
           name: 'John Doe',
@@ -270,7 +270,7 @@ describe('business route', () => {
 
     test('invalid user should return 404 Not Found', async () => {
       expect.assertions(2);
-      const res = await request(app).patch(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user: '',
           name: 'John Doe',
@@ -282,7 +282,7 @@ describe('business route', () => {
 
     test('altered ABN should return 400 Bad Request', async () => {
       expect.assertions(2);
-      const res = await request(app).patch(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user,
           name: 'John Doe',
@@ -294,7 +294,7 @@ describe('business route', () => {
 
     test('correct input should return 200 OK', async () => {
       expect.assertions(8);
-      const res = await request(app).patch(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user,
           name: 'John Doe',
@@ -328,7 +328,7 @@ describe('business route', () => {
 
     test('invalid user should return 404 Not Found', async () => {
       expect.assertions(2);
-      const res = await request(app).delete(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user: '',
         });
@@ -338,7 +338,7 @@ describe('business route', () => {
 
     test('correct input should return 200 OK', async () => {
       expect.assertions(3);
-      const res = await request(app).delete(`/api/business`)
+      const res = await request(app).post('/api/business')
         .send({
           user,
         });

@@ -113,7 +113,7 @@ const Business = ({ isNew }: Props) => {
       },
     };
     const body = {
-      user: user.sub,
+      user: user && user.sub,
       name,
       abn,
       phone,

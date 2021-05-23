@@ -54,7 +54,7 @@ const Reviews = ({ children, business: { reviews } }: Props) => {
 
   return (
     <div className={`tab-pane fade ${tab[1] === 'reviews' && 'show active'}`} id='reviews' role='tabpanel' aria-labelledby='reviews-tab'>
-      {isAuthenticated && !reviews.some((review) => review.user === user.sub) && children}
+      {isAuthenticated && !reviews.some((review) => user && review.user === user.sub) && children}
       <div className='row pb-3 border-top'>
         {
           reviews.length > 0 ? (
@@ -75,7 +75,7 @@ const Reviews = ({ children, business: { reviews } }: Props) => {
                           {item.comment}
                         </p>
                         {
-                          isAuthenticated && item.user === user.sub
+                          isAuthenticated && user && item.user === user.sub
                           && (
                           <p className='card-text'>
                             <button type='button' className='btn btn-danger' onClick={() => onClick(item._id)}>Delete Review</button>
@@ -103,7 +103,7 @@ const Reviews = ({ children, business: { reviews } }: Props) => {
                           {item.comment}
                         </p>
                         {
-                          isAuthenticated && item.user === user.sub
+                          isAuthenticated && user && item.user === user.sub
                           && (
                           <p className='card-text'>
                             <button type='button' className='btn btn-danger' onClick={() => onClick(item._id)}>Delete Review</button>
