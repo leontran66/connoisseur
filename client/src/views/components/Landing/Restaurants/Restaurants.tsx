@@ -23,7 +23,7 @@ type Businesses = {
 const Restaurants = () => {
   useEffect(() => {
     async function getBusinesses() {
-      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/business`)
+      await axios.get(`${process.env.REACT_APP_API}/api/business`)
         .then((res) => {
           const { businesses } = res.data;
           setBusinessData({

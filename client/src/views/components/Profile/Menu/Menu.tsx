@@ -35,7 +35,7 @@ const Business = ({ business }: Props) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.delete(`${process.env.REACT_APP_API_LOCAL}/api/menu/${id}`, config)
+    await axios.delete(`${process.env.REACT_APP_API}/api/menu/${id}`, config)
       .then(() => {
         history.push('/profile#menu');
         history.go(0);

@@ -40,7 +40,7 @@ const Business = ({ isNew }: Props) => {
           Authorization: `Bearer ${token}`,
         },
       };
-      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/business/me`, config)
+      await axios.get(`${process.env.REACT_APP_API}/api/business/me`, config)
         .then((res) => {
           const {
             name, abn, phone, fax, streetAddress, suburb, state, postCode,
@@ -124,7 +124,7 @@ const Business = ({ isNew }: Props) => {
       postCode,
     };
     if (!isNew) {
-      await axios.patch(`${process.env.REACT_APP_API_LOCAL}/api/business`, body, config)
+      await axios.patch(`${process.env.REACT_APP_API}/api/business`, body, config)
         .then(() => history.push('/profile#business'))
         .catch((err) => {
           const newErrors = {
@@ -155,7 +155,7 @@ const Business = ({ isNew }: Props) => {
           });
         });
     } else {
-      await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/business`, body, config)
+      await axios.post(`${process.env.REACT_APP_API}/api/business`, body, config)
         .then(() => history.push('/profile#business'))
         .catch((err) => {
           const newErrors = {

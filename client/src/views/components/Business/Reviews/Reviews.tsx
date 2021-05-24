@@ -45,7 +45,7 @@ const Reviews = ({ children, business: { reviews } }: Props) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.delete(`${process.env.REACT_APP_API_LOCAL}/api/review/${reviewID}`, config)
+    await axios.delete(`${process.env.REACT_APP_API}/api/review/${reviewID}`, config)
       .then(() => {
         history.push(`/restaurants/${id}#reviews`);
         history.go(0);

@@ -17,7 +17,6 @@ RUN npm prune --production
 FROM node:lts-alpine
 WORKDIR /app
 COPY ["package.json", "package-lock.json", "./"]
-COPY [".env", "./"]
 COPY --from=BUILD_IMAGE /app/dist ./dist
 COPY --from=BUILD_IMAGE /app/node_modules ./node_modules
 ENV NODE_ENV production

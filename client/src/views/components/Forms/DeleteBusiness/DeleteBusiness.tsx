@@ -18,7 +18,7 @@ const DeleteBusiness = () => {
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.delete(`${process.env.REACT_APP_API_LOCAL}/api/business`, config);
+    await axios.delete(`${process.env.REACT_APP_API}/api/business`, config);
     history.push('/profile#business');
     history.go(0);
   };

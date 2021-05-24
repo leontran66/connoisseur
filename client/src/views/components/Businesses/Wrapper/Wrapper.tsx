@@ -42,7 +42,7 @@ const Wrapper = ({ children }: Props) => {
 
   useEffect(() => {
     const getBusiness = async () => {
-      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/business`)
+      await axios.get(`${process.env.REACT_APP_API}/api/business`)
         .then((res) => {
           const { businesses } = res.data;
           setBusinessData({

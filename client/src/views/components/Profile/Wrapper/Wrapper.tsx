@@ -24,7 +24,7 @@ const Wrapper = ({ children }: Props) => {
         },
       };
 
-      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/business/me`, config)
+      await axios.get(`${process.env.REACT_APP_API}/api/business/me`, config)
         .then((res) => {
           const {
             name, abn, phone, fax, streetAddress, suburb, state, postCode, menu, reviews,

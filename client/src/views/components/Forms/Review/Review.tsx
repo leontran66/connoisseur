@@ -43,7 +43,7 @@ const Review = () => {
       rating,
       comment,
     };
-    await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/review`, body, config)
+    await axios.post(`${process.env.REACT_APP_API}/api/review`, body, config)
       .then(() => {
         history.push(`/restaurants/${id}#reviews`);
         history.go(0);

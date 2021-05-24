@@ -21,7 +21,7 @@ const Wrapper = ({ children }: Props) => {
 
   useEffect(() => {
     const getBusiness = async () => {
-      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/business/${id}`)
+      await axios.get(`${process.env.REACT_APP_API}/api/business/${id}`)
         .then((res) => {
           const {
             name, phone, fax, streetAddress, suburb, state, postCode, menu, reviews,

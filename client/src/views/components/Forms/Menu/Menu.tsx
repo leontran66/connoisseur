@@ -43,7 +43,7 @@ const Menu = ({ isNew }: Props) => {
           Authorization: `Bearer ${token}`,
         },
       };
-      await axios.get(`${process.env.REACT_APP_API_LOCAL}/api/menu/${id}`, config)
+      await axios.get(`${process.env.REACT_APP_API}/api/menu/${id}`, config)
         .then((res) => {
           const {
             name, category, price, options, spicy, vegetarian, description,
@@ -125,7 +125,7 @@ const Menu = ({ isNew }: Props) => {
       description,
     };
     if (!isNew) {
-      await axios.patch(`${process.env.REACT_APP_API_LOCAL}/api/menu/${id}`, body, config)
+      await axios.patch(`${process.env.REACT_APP_API}/api/menu/${id}`, body, config)
         .then(() => history.push('/profile#menu'))
         .catch((err) => {
           const newErrors = {
@@ -146,7 +146,7 @@ const Menu = ({ isNew }: Props) => {
           });
         });
     } else {
-      await axios.post(`${process.env.REACT_APP_API_LOCAL}/api/menu`, body, config)
+      await axios.post(`${process.env.REACT_APP_API}/api/menu`, body, config)
         .then(() => history.push('/profile#menu'))
         .catch((err) => {
           const newErrors = {
